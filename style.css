@@ -1,0 +1,744 @@
+/* Base styles for body, font, and smooth scrolling */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f9fa;
+    color: #34495e;
+    line-height: 1.7;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #eef2f6;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4a90e2;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #357abd;
+}
+
+/* Hero section background pattern and animation */
+.bg-hero-clean {
+    background-color: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+.bg-hero-clean::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle, rgba(200, 200, 200, 0.05) 1px, transparent 1px);
+    background-size: 25px 25px;
+    animation: move-pattern 90s linear infinite;
+    opacity: 0.8;
+    z-index: 0;
+}
+
+@keyframes move-pattern {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 500px 500px;
+    }
+}
+
+/* Header styling with shadow */
+#header {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Navigation link styles */
+.nav-link {
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    padding: 0.6rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    color: #4a5568;
+}
+
+.nav-link:hover {
+    color: #4a90e2;
+    background-color: rgba(74, 144, 226, 0.1);
+    transform: translateY(-2px);
+}
+
+.nav-link.active {
+    color: #4a90e2;
+    font-weight: 600;
+    background-color: rgba(74, 144, 226, 0.15);
+    box-shadow: 0 2px 8px rgba(74, 144, 226, 0.2);
+}
+
+/* Vision card styles with hover effects */
+.vision-card {
+    background: #ffffff;
+    border-radius: 1.5rem;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease-out;
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.vision-card::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(74, 144, 226, 0.4) 0%, transparent 70%);
+    border-radius: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 0;
+}
+
+.vision-card:hover::after {
+    width: 200%;
+    height: 200%;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.vision-card:hover {
+    transform: translateY(-15px) rotateY(5deg) scale(1.03);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25), 0 0 0 6px rgba(74, 144, 226, 0.5);
+}
+
+/* Vision icon wrapper styles with hover effects */
+.vision-icon-wrapper {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    z-index: 2;
+}
+
+.vision-card:hover .vision-icon-wrapper {
+    transform: rotate(10deg) scale(1.2);
+    animation: iconBounce 0.7s ease-in-out;
+}
+
+@keyframes iconBounce {
+
+    0%,
+    100% {
+        transform: rotate(10deg) scale(1.2);
+    }
+
+    50% {
+        transform: rotate(8deg) scale(1.25);
+    }
+}
+
+/* Background gradients for vision icons */
+.icon-bg-1 {
+    background: linear-gradient(45deg, #34495e, #2c3e50);
+}
+
+.icon-bg-2 {
+    background: linear-gradient(45deg, #4a90e2, #2196f3);
+}
+
+.icon-bg-3 {
+    background: linear-gradient(45deg, #fc5c7d, #e91e63);
+}
+
+/* Timeline item styles */
+.timeline-item-new {
+    position: relative;
+    padding-left: 3rem;
+    margin-bottom: 2.5rem;
+    border-left: 3px solid #cbd5e0;
+    transition: all 0.3s ease;
+}
+
+.timeline-item-new:last-child {
+    border-left: none;
+}
+
+.timeline-dot-new {
+    position: absolute;
+    left: -10px;
+    top: 0;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: #4a90e2;
+    border: 4px solid #ffffff;
+    box-shadow: 0 0 0 4px rgba(74, 144, 226, 0.2);
+    transition: all 0.3s ease;
+}
+
+.timeline-item-new:hover .timeline-dot-new {
+    transform: scale(1.3);
+    box-shadow: 0 0 0 6px rgba(74, 144, 226, 0.4);
+}
+
+/* Tool card styles with hover effects and gradients */
+.tool-card-new {
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s ease-in-out;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    background-image: linear-gradient(45deg, var(--from-color), var(--to-color));
+}
+
+/* Specific gradients for each tool card */
+.tool-card-new[data-tool="upi"] {
+    --from-color: #2563eb;
+    --to-color: #4f46e5;
+}
+
+.tool-card-new[data-tool="digilocker"] {
+    --from-color: #9333ea;
+    --to-to: #db2777;
+}
+
+.tool-card-new[data-tool="umang"] {
+    --from-color: #0d9488;
+    --to-color: #06b6d4;
+}
+
+.tool-card-new[data-tool="cowin"] {
+    --from-color: #dc2626;
+    --to-color: #e11d48;
+}
+
+.tool-card-new[data-tool="epathshala"] {
+    --from-color: #4f46e5;
+    --to-color: #2563eb;
+}
+
+.tool-card-new[data-tool="bhashini"] {
+    --from-color: #16a34a;
+    --to-color: #65a30d;
+}
+
+.tool-card-new[data-tool="bharatnet"] {
+    --from-color: #374151;
+    --to-color: #1f2937;
+}
+
+.tool-card-new[data-tool="aadhaar"] {
+    --from-color: #ea580c;
+    --to-color: #b91c1c;
+}
+
+/* Inner glow effect on hover */
+.tool-card-new::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease-out;
+    z-index: 0;
+}
+
+.tool-card-new:hover::before {
+    opacity: 1;
+}
+
+/* Shine sweep effect on hover */
+.tool-card-new::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: skewX(-20deg);
+    transition: none;
+    z-index: 2;
+}
+
+.tool-card-new:hover::after {
+    animation: shine-sweep 1s forwards;
+}
+
+@keyframes shine-sweep {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 150%;
+    }
+}
+
+.tool-card-new:hover {
+    transform: translateY(-15px) scale(1.05);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25), 0 0 0 5px rgba(74, 144, 226, 0.5);
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
+.tool-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes gradient-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Chart container styles */
+.chart-container-new {
+    background: #ffffff;
+    border-radius: 1.5rem;
+    padding: 2rem;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.chart-container-new:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12), 0 0 0 4px rgba(74, 144, 226, 0.3);
+}
+
+/* STEAM card styles with hover effects and gradients */
+.steam-card-new {
+    background: #ffffff;
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease-in-out, border-color 0.3s ease-in-out;
+    border: 1px solid #e2e8f0;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.steam-card-new::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(74, 144, 226, 0.05) 0%, rgba(74, 144, 226, 0.15) 50%, transparent 100%);
+    background-size: 200% 200%;
+    opacity: 0;
+    transition: opacity 0.4s ease-out, background-position 0.4s ease-out;
+    z-index: 0;
+}
+
+.steam-card-new:hover::before {
+    opacity: 1;
+    background-position: 100% 100%;
+}
+
+.steam-card-new:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 0 5px rgba(74, 144, 226, 0.4);
+    border-color: #4a90e2;
+}
+
+.steam-icon-circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    z-index: 2;
+}
+
+.steam-card-new:hover .steam-icon-circle {
+    transform: scale(1.15) rotate(5deg);
+}
+
+.steam-card-new .absolute {
+    transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease;
+    transform: translateX(0);
+    opacity: 0;
+}
+
+.steam-card-new:hover .absolute {
+    opacity: 1;
+    transform: translateX(8px);
+    color: #2196f3;
+}
+
+/* Background gradients for STEAM icons */
+.steam-science-bg {
+    background: linear-gradient(45deg, #4a90e2, #2196f3);
+}
+
+.steam-technology-bg {
+    background: linear-gradient(45deg, #8e2de2, #4a00e0);
+}
+
+.steam-engineering-bg {
+    background: linear-gradient(45deg, #008080, #00CED1);
+}
+
+.steam-arts-bg {
+    background: linear-gradient(45deg, #fc5c7d, #e91e63);
+}
+
+.steam-mathematics-bg {
+    background: linear-gradient(45deg, #34495e, #2c3e50);
+}
+
+/* Modal container and panel base styles */
+.modal-container {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+}
+
+.modal-panel {
+    background: #ffffff;
+    border-radius: 1.5rem;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    animation: fadeInScale 0.3s ease-out;
+    border: 1px solid #e2e8f0;
+}
+
+/* Full-screen quiz modal styles */
+#quiz-modal.modal-container {
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    padding: 1rem; /* Reduced padding to allow more space for content */
+}
+
+#quiz-modal .modal-panel {
+    border-radius: 1.5rem; /* Match other modals */
+    width: 95%; /* Increased width for more coverage */
+    max-width: 900px; /* Increased max width for larger screens */
+    height: 95vh; /* Take up more vertical space */
+    max-height: 95vh; /* Max height for scrollability */
+    padding: 2rem; /* Adjusted padding */
+    display: flex;
+    flex-direction: column;
+    /* Changed background to solid white with blue border and shadow for sleekness */
+    background: #ffffff;
+    color: #2c3e50;
+    animation: fadeInScale 0.3s ease-out; /* Use existing fadeInScale */
+    border: 1px solid #4a90e2; /* Stronger blue border */
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3), 0 0 0 5px rgba(74, 144, 226, 0.2); /* Added blue outer glow */
+}
+
+#quiz-modal .modal-panel h2 {
+    color: #1a202c;
+    font-size: 2.5rem; /* Slightly larger title */
+    margin-bottom: 1.5rem; /* Reduced margin */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05); /* Softer shadow */
+}
+
+#quiz-modal .modal-panel select,
+#quiz-modal .modal-panel button {
+    border-radius: 0.75rem;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Add shadow to buttons/select */
+}
+
+#quiz-modal .modal-panel .quiz-question-card {
+    background: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08); /* Softer shadow */
+    padding: 1.5rem 2rem;
+    margin-bottom: 1rem; /* Reduced margin between questions */
+    transition: all 0.2s ease-in-out;
+    border: 1px solid #e2e8f0;
+}
+
+#quiz-modal .modal-panel .quiz-question-card:hover {
+    transform: translateY(-5px); /* More pronounced lift effect */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+#quiz-modal .modal-panel .quiz-question-card label {
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+    transition: background-color 0.2s ease, transform 0.1s ease, border-color 0.2s ease; /* Added border-color transition */
+    display: flex;
+    align-items: center;
+    border: 1px solid #cbd5e0; /* Default border for options */
+}
+
+#quiz-modal .modal-panel .quiz-question-card label:hover {
+    background-color: #e6f7ff; /* Lighter hover background */
+    transform: translateX(5px);
+    border-color: #4a90e2; /* Highlight border on hover, matching theme blue */
+}
+
+#quiz-modal .modal-panel .quiz-question-card input[type="radio"]:checked+span {
+    font-weight: 600;
+    color: #2563eb;
+}
+
+#quiz-modal .modal-panel .quiz-question-card .border-green-500 {
+    border-color: #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.3);
+}
+
+#quiz-modal .modal-panel .quiz-question-card .border-red-500 {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.3);
+}
+
+#quiz-modal .modal-panel .quiz-question-card .bg-green-100 {
+    background-color: #d1fae5;
+}
+
+/* Custom scrollbar for quiz questions container */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f8fd;
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #90caf9;
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #64b5f6;
+}
+
+/* Success modal styles */
+.success-modal-panel {
+    background: linear-gradient(135deg, #e6fffa, #ccfbf1);
+    border: 1px solid #38b2ac;
+    color: #2c7a7b;
+}
+
+.success-modal-icon {
+    color: #38a169;
+}
+
+.success-modal-button {
+    background-color: #38a169;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.success-modal-button:hover {
+    background-color: #2f855a;
+}
+
+/* Progress banner styles */
+.progress-banner {
+    background: linear-gradient(135deg, #f0f4f8, #eef2f6);
+    color: #34495e;
+    padding: 4rem 2rem;
+    border-radius: 2rem;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-banner .title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+    position: relative;
+    z-index: 1;
+}
+
+.progress-banner .subtitle {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 3rem;
+    color: #607d8b;
+    position: relative;
+    z-index: 1;
+}
+
+/* Stats container and item styles */
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2.5rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 1;
+}
+
+.stat-item {
+    background: linear-gradient(135deg, #ffffff 0%, #f9fbfd 100%);
+    background-size: 200% 200%;
+    border-radius: 1.5rem;
+    padding: 2.5rem 1.5rem;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.5s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+}
+
+.stat-item::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(74, 144, 226, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 0;
+}
+
+.stat-item:hover::before {
+    width: 150%;
+    height: 150%;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.stat-item:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: #4a90e2;
+    background-position: 100% 100%;
+}
+
+.stat-number {
+    font-size: 4.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    color: #1a202c;
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.stat-item:hover .stat-number {
+    color: #108ef5;
+    text-shadow: 0 0 15px rgba(74, 144, 226, 0.8);
+}
+
+.stat-description {
+    font-size: 1.1rem;
+    color: #4a5568;
+    max-width: 200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease;
+}
+
+.stat-item:hover .stat-description {
+    color: #2d3748;
+}
+
+/* Pulse animation for stats */
+@keyframes pulse-animation {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    50% {
+        transform: scale(1.01);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    }
+}
+
+.pulse-animation {
+    animation: pulse-animation 1s ease-in-out;
+}
+
+/* Arrow animation in hero section */
+@keyframes bounce {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.animate-bounce-arrow {
+    animation: bounce 1.5s infinite;
+}
+
+/* Predefined questions styling */
+.predefined-question-button {
+    background-color: #e2e8f0;
+    color: #4a5568;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+    border: 1px solid #cbd5e0;
+    cursor: pointer;
+}
+
+.predefined-question-button:hover {
+    background-color: #cbd5e0;
+    color: #2d3748;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+strong{
+    color: #0337a7;
+}
