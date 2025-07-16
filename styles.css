@@ -1,0 +1,400 @@
+* {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #F2F2F7;
+    color: #333333;
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #e0e0e0;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+@keyframes move-pattern {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+.hero-bg-pattern {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    animation: move-pattern 60s linear infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.animate-bounce-slow {
+    animation: bounce 2s infinite;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal-container {
+    animation: fadeInScale 0.3s ease-out;
+}
+
+.tool-card {
+    position: relative;
+    overflow: hidden;
+    --x: 50%;
+    --y: 50%;
+    transition: all 0.3s ease-in-out;
+}
+
+.tool-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 1.5rem;
+    background: radial-gradient(circle at var(--x) var(--y), rgba(255, 255, 255, 0.3) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.tool-card:hover::before {
+    opacity: 1;
+}
+
+.tool-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50px;
+    width: 50%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(-150%) skewX(-30deg);
+    transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+    opacity: 0;
+    pointer-events: none;
+    border-radius: 1.5rem;
+}
+
+.tool-card:hover::after {
+    transform: translateX(200%) skewX(-30deg);
+    opacity: 1;
+}
+
+@keyframes pulse-animation {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.03);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.pulse-animation {
+    animation: pulse-animation 1.5s infinite;
+}
+
+.timeline-item {
+    position: relative;
+}
+
+.timeline-dot-new {
+    position: absolute;
+    left: 50%;
+    top: 0.5rem;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 24px;
+    background-color: #f97316;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease;
+    z-index: 10;
+}
+
+.timeline-item:hover .timeline-dot-new {
+    transform: translateX(-50%) scale(1.3);
+    background-color: #ea580c;
+}
+
+.timeline-card {
+    background-color: #ffffff;
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease-in-out;
+    border: 1px solid #e5e7eb;
+}
+
+.timeline-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+}
+
+strong {
+    color: #0337a7;
+}
+
+.active-nav-link {
+    background-color: #f97316;
+    color: white;
+    box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4);
+}
+
+.quiz-option-button {
+    width: 100%;
+    text-align: left;
+    padding: 0.75rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0.75rem;
+    border: 1px solid #d1d5db;
+    background-color: #ffffff;
+    color: #374151;
+    font-weight: 500;
+    transition-property: all;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+}
+
+.quiz-option-button:hover:not(.selected):not(.correct):not(.incorrect) {
+    background-color: #eff6ff;
+    border-color: #60a5fa;
+}
+
+.quiz-option-button.selected {
+    background-color: #bfdbfe;
+    border-color: #2563eb;
+    color: #1e3a8a;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transform: scale(1.02);
+}
+
+.quiz-option-button.selected:hover {
+    background-color: #93c5fd;
+    border-color: #1d4ed8;
+}
+
+.quiz-option-button.correct {
+    background-color: #dcfce7;
+    border-color: #22c55e;
+    color: #166534;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.quiz-option-button.incorrect {
+    background-color: #fee2e2;
+    border-color: #ef4444;
+    color: #991b1b;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.quiz-question-container {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.quiz-question-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.quiz-question-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 8px;
+}
+
+.quiz-question-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 8px;
+}
+
+.quiz-question-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.ai-chat-box {
+    background-color: rgba(240, 248, 255, 0.8);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(219, 234, 254, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.ai-chat-input {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    border: 1px solid #93c5fd;
+    background-color: #ffffff;
+    color: #374151;
+    resize: vertical;
+    min-height: 4rem;
+    transition: all 0.2s ease-in-out;
+    box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.ai-chat-input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+}
+
+.ai-chat-response {
+    background-color: #e0f2fe;
+    padding: 1.5rem;
+    border-radius: 1.25rem;
+    border: 1px solid #bfdbfe;
+    text-align: left;
+    min-height: 1rem;
+    color: #374151;
+    overflow-y: auto;
+    max-height: 500px;
+    box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+}
+
+.ai-chat-response::-webkit-scrollbar {
+    width: 8px;
+}
+
+.ai-chat-response::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 8px;
+}
+
+.ai-chat-response::-webkit-scrollbar-thumb {
+    background: #a7d9f7;
+    border-radius: 8px;
+}
+
+.ai-chat-response::-webkit-scrollbar-thumb:hover {
+    background: #60a5fa;
+}
+
+.ai-chat-response h1 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: #1a202c;
+}
+
+.ai-chat-response h2 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: #2d3748;
+}
+
+.ai-chat-response strong.formatted-bold {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #0337a7;
+}
+
+.ai-chat-response em {
+    font-style: italic;
+    color: #4a5568;
+}
+
+.ai-chat-response br {
+    margin-bottom: 0.5rem;
+}
+
+.modal-panel {
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(229, 231, 235, 0.7);
+}
+
+#header {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+}
+
+#mobileMenuOverlay {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+
+.modal-panel::-webkit-scrollbar {
+    display: none;
+}
+
+#scrollToTopBtn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: #f97316;
+    color: white;
+    padding: 1rem;
+    border-radius: 9999px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    opacity: 0;
+    transform: translateY(20px);
+    cursor: pointer;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#scrollToTopBtn.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#scrollToTopBtn:hover {
+    background-color: #ea580c;
+    transform: translateY(-5px) scale(1.05);
+}
