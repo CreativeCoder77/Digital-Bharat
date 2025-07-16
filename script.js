@@ -610,7 +610,7 @@ function toggleStatsView() {
             statsChartInstance.destroy();
             statsChartInstance = null;
         }
-        toggleBtn.textContent = 'Show as Chart';
+        toggleBtn.textContent = 'Show Chart';
         document.querySelectorAll('.stat-item').forEach(item => {
             const valueElement = item.querySelector('[data-target]');
             const target = parseFloat(valueElement.dataset.target);
@@ -621,7 +621,7 @@ function toggleStatsView() {
         statsDisplay.classList.add('hidden');
         statsChartContainer.classList.remove('hidden');
         initializeSpecificChart('statsChart', 'stats');
-        toggleBtn.textContent = 'Show as Numbers';
+        toggleBtn.textContent = 'Show Numbers';
     }
 }
 
@@ -629,6 +629,8 @@ async function summarizeTimelineImpact(event) {
     const button = event.target;
     const eventName = button.dataset.event;
     const summaryDiv = button.nextElementSibling;
+    summaryDiv.style.fontSize = '0.9rem';
+
 
     button.textContent = 'Summarizing...';
     button.disabled = true;
@@ -636,7 +638,7 @@ async function summarizeTimelineImpact(event) {
     summaryDiv.innerHTML = '<p class="text-gray-500 flex items-center space-x-2"><i class="fas fa-spinner fa-spin"></i><span>Generating summary...</span></p>';
 
     try {
-        const prompt = `Summarize the impact of the following Digital India event: "${eventName}in not more than 40 words"`;
+        const prompt = `Summarize the impact of the following Digital India event: "${eventName}in not more than 40 words ADD A STRONG TAG TO THE IMPORTANT PARTS OF THE SUMMARY"`;
         const response = await callGeminiAPI(prompt, 'timeline-impact-summarizer');
         summaryDiv.innerHTML = formatTextForDisplay(response);
     } catch (error) {
