@@ -26,13 +26,17 @@ _map_cache = {}
 _cache_lock = threading.Lock()
 CACHE_TTL = 3600
 
-PROBLEM_REPORT_FILE = "data/problem_reports.json"
-DONATION_FILE = "data/donations.json"
-APPLICATION_FILE = "data/applications.json"
-CONTACT_FILE = "data/contact.json"
-DOCTOR_APPOINTMENT_FILE = "data/doctor_appointment.json"
-MEDICINES_FILE = "data/medicines.json"
-ACTIVITY_FILE = 'user_activity.json'
+PROBLEM_REPORT_FILE = "/etc/secrets/problem_reports.json"
+DONATION_FILE = "/etc/secrets/donations.json"
+APPLICATION_FILE = "/etc/secrets/applications.json"
+CONTACT_FILE = "/etc/secrets/contact.json"
+DOCTOR_APPOINTMENT_FILE = "/etc/secrets/doctor_appointment.json"
+MEDICINES_FILE = "/etc/secrets/medicines.json"
+ACTIVITY_FILE = '/etc/secrets/user_activity.json'
+AI_USAGE_FILE = "/etc/secrets/ai_usage_stats.json"
+CLICK_FILE = "/etc/secrets/click_data.json"
+USER_FILE = "/etc/secrets/user_activity.json"
+
 
 
 VILLAGES_DATA = [
@@ -60,7 +64,7 @@ INDIA_BOUNDS = {
     "max_lat": 35.4940095078
 }
 
-API_KEY = os.environ.get('GEMINI_API_KEY') #replace with your api key 
+API_KEY = "AIzaSyC0br2ojApvYftpmJ6vwtdjzlwPHzmIf40" 
 
 @app.route('/get_api_key')
 def get_api_key():
@@ -70,7 +74,7 @@ def get_api_key():
 @lru_cache(maxsize=1)
 def load_static_data():
     try:
-        with open(os.path.join(app.root_path, 'static', 'data.json'), 'r', encoding='utf-8') as f:
+        with open("/etc/secrets/data.json", 'r', encoding='utf-8') as f:
             return json.load(f)
     except Exception as e:
         print("Warning loading data.json:", e)
@@ -328,8 +332,6 @@ def health_check():
 import datetime
 
 
-CLICK_FILE = "click_data.json"
-USER_FILE = "user_activity.json"
 
 def load_json(file_path):
     if not os.path.exists(file_path):
@@ -375,20 +377,29 @@ def get_tab_clicks():
 
 # ---------- User Tracking ----------
 def track_user():
+    # 获取客户端IP地址
     ip = get_client_ip()
+    # 获取当前UTC时间
     now = datetime.datetime.utcnow().isoformat()
 
+    # 尝试加载用户数据
     try:
         data = load_json(USER_FILE)
+    # 如果JSON解码错误，则创建一个空的用户列表
     except json.JSONDecodeError:
         data = {"users": []}
 
+    # 如果用户列表不存在，则创建一个空的用户列表
     if "users" not in data:
         data["users"] = []
 
+    # 标记是否找到用户
     found = False
+    # 遍历用户列表
     for user in data["users"]:
+        # 如果找到相同IP地址的用户
         if user["ip"] == ip:
+            # 更新最后看到的时间
             user["last_seen"] = now
             found = True
             break
@@ -423,7 +434,6 @@ def user_stats():
         "total_unique_users": all_time
     })
 
-AI_USAGE_FILE = "ai_usage_stats.json"
 
 @app.route("/ai-usage-track", methods=["POST"])
 def track_ai_usage():
