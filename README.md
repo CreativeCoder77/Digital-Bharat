@@ -4,7 +4,7 @@
 Welcome to **Digital Bharat**, a playful and imaginative web project designed purely for fun and exploration! This isn't a real government initiative or official platform, but rather a creative exercise to visualize a "digital" India with a lighthearted approach.
 
 🚀 **Demo**  
-Experience Digital Bharat live: [https://digitalbharat077.netlify.app/](https://digitalbharat077.netlify.app/)
+Experience Digital Bharat live: [https://digital-bharat.onrender.com/](https://digital-bharat.onrender.com/)
 
 ---
 
