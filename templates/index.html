@@ -1,0 +1,2660 @@
+<!DOCTYPE HTML>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Bharat - Empowering India Digitally</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter (Modern, Sleek) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Google Fonts: Orbitron (Futuristic for titles) -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Google Material Icons CDN -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Font Awesome for social icons (still useful for brands) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="google" content="notranslate">
+
+    <!-- Three.js CDN for 3D map rendering -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+
+    <script type="text/javascript">
+        function autoTranslate(lang) {
+            const allLangs = document.querySelectorAll('.language-switcher span[onclick]');
+
+            allLangs.forEach(span => {
+                span.removeAttribute('aria-current');
+                span.classList.remove(
+                    'bg-gradient-to-r', 'from-saffron', 'to-bharat-saffron',
+                    'text-white', 'font-bold', 'shadow-lg', 'transform', 'hover:scale-105'
+                );
+                span.classList.add(
+                    'text-gray-300', 'hover:text-saffron', 'hover:bg-saffron/10',
+                    'px-3', 'py-2', 'rounded-lg', 'cursor-pointer',
+                    'transition-all', 'duration-200', 'font-medium'
+                );
+            });
+
+            const clickedLang = document.querySelector(`span[onclick="autoTranslate('${lang}')"]`);
+            if (clickedLang) {
+                clickedLang.setAttribute('aria-current', 'true');
+                clickedLang.classList.remove(
+                    'text-gray-300', 'hover:text-saffron', 'hover:bg-saffron/10', 'font-medium'
+                );
+                clickedLang.classList.add(
+                    'bg-gradient-to-r', 'from-saffron', 'to-bharat-saffron',
+                    'text-white', 'px-3', 'py-2', 'rounded-lg', 'font-bold',
+                    'cursor-pointer', 'shadow-lg', 'transform', 'hover:scale-105',
+                    'transition-all', 'duration-200'
+                );
+            }
+
+            // Trigger Google Translate
+            const interval = setInterval(() => {
+                const select = document.querySelector("select.goog-te-combo");
+                if (select) {
+                    select.value = lang;
+                    select.dispatchEvent(new Event('change'));
+                    clearInterval(interval);
+                }
+            }, 300);
+        }
+        // Tailwind config
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'orbitron': ['Orbitron', 'sans-serif'],
+                        'poppins': ['Poppins', 'sans-serif']
+                    },
+                    colors: {
+                        'saffron': '#FF9933',
+                        'dark-green': '#138808',
+                        'navy-blue': '#000080',
+                        'bharat-saffron': '#FF6600',
+                        'bharat-green': '#228B22'
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bounce-slow': 'bounce 4s infinite',
+                        'spin-slow': 'spin 12s linear infinite',
+                        'gradient-shift': 'gradient-shift 4s ease-in-out infinite',
+                        'slide-in-left': 'slideInLeft 0.8s ease-out forwards',
+                        'fade-in': 'fadeIn 1s ease-in forwards'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-25px)' }
+                        },
+                        'gradient-shift': {
+                            '0%, 100%': { 'background-position': '0% 50%' },
+                            '50%': { 'background-position': '100% 50%' }
+                        },
+                        slideInLeft: {
+                            '0%': { transform: 'translateX(-50px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+
+
+
+    <style>
+        /* Base Blue Tint with Digital Bharat Theme Colors */
+        :root {
+            --dark-bg-primary: #0A0A1A;
+            /* Very Dark Blue */
+            --dark-bg-secondary: #101025;
+            /* Slightly Lighter Dark Blue */
+            --dark-bg-tertiary: #181830;
+            /* Even Lighter Dark Blue for cards/sections */
+            --dark-text-primary: #E0E7FF;
+            /* Very Light Blue for main text */
+            --dark-text-secondary: #A0B0D0;
+            /* Muted Light Blue for secondary text */
+            --dark-border: #3A4A6A;
+            /* Darker blue border */
+            --accent-saffron: #FF6B00;
+            /* Bright Saffron */
+            --accent-emerald: #00B383;
+            /* Emerald Green */
+            --accent-blue: #2563EB;
+            /* Digital Blue */
+            --accent-purple: #800080;
+            /* A shade of purple for consistency */
+            --accent-red: #DC2626;
+            /* A shade of red for consistency */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark-bg-primary);
+            color: var(--dark-text-primary);
+            overflow-x: hidden;
+            /* Prevent horizontal scroll */
+        }
+
+        /* Orbitron font for titles */
+        .font-orbitron {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        /* Gradient Text - Digital Bharat Theme (Bright Saffron to Emerald Green) */
+        .gradient-text {
+            background: linear-gradient(90deg, var(--accent-saffron), var(--accent-emerald));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-gradient-bg {
+            background: linear-gradient(to bottom right, #0a0f1a, #090c18, #101622);
+            background-image:
+                radial-gradient(at 27% 37%, rgba(255, 107, 0, 0.08) 0px, transparent 50%),
+                radial-gradient(at 97% 21%, rgba(0, 179, 131, 0.12) 0px, transparent 50%),
+                radial-gradient(at 52% 99%, rgba(37, 99, 235, 0.03) 0px, transparent 50%),
+                radial-gradient(at 10% 29%, rgba(255, 107, 0, 0.08) 0px, transparent 50%),
+                radial-gradient(at 97% 96%, rgba(0, 179, 131, 0.12) 0px, transparent 50%),
+                radial-gradient(at 33% 50%, rgba(37, 99, 235, 0.03) 0px, transparent 50%),
+                radial-gradient(at 79% 53%, rgba(255, 107, 0, 0.08) 0px, transparent 50%),
+                radial-gradient(at 85% 90%, rgba(0, 179, 131, 0.12) 0px, transparent 50%);
+            animation: backgroundPan 30s linear infinite alternate;
+        }
+
+
+        /* Subtle background pattern for other sections */
+        .subtle-section-bg-pattern {
+            background-image:
+                radial-gradient(at 15% 85%, rgba(0, 179, 131, 0.02) 0px, transparent 50%),
+                radial-gradient(at 85% 15%, rgba(255, 107, 0, 0.02) 0px, transparent 50%);
+        }
+
+        @keyframes backgroundPan {
+            0% {
+                background-position: 0% 0%;
+            }
+
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+
+        /* Glassmorphism Card Effect - Enhanced for glossy look with a blue tint and subtle theme colors */
+        .glass-card {
+            background: linear-gradient(135deg,
+                    rgba(24, 24, 48, 0.25),
+                    rgba(30, 30, 60, 0.15),
+                    rgba(40, 44, 78, 0.2));
+            /* Multi-stop gradient with much lower opacity */
+            backdrop-filter: blur(20px) saturate(1.2);
+            -webkit-backdrop-filter: blur(20px) saturate(1.2);
+            border-radius: 1.25rem;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            /* Lighter, more ethereal border */
+            box-shadow:
+                0 12px 40px rgba(0, 0, 0, 0.15),
+                0 2px 8px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.05);
+            /* Layered shadows with inner highlights */
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            /* Smoother easing */
+        }
+
+        /* Enhanced hover state */
+        .glass-card:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.2),
+                0 8px 16px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.18);
+        }
+
+        /* Subtle base glow - very minimal */
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: -60%;
+            left: -60%;
+            width: 220%;
+            height: 220%;
+            background:
+                radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.01) 0%, transparent 70%);
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: 1;
+            transition: all 0.4s ease;
+        }
+
+        /* Enhanced glow only on hover */
+        .glass-card:hover::before {
+            background:
+                radial-gradient(circle at 30% 30%, rgba(138, 43, 226, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(0, 191, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 50% 20%, rgba(255, 20, 147, 0.03) 0%, transparent 40%),
+                linear-gradient(45deg, rgba(255, 255, 255, 0.03) 0%, transparent 100%);
+            opacity: 1;
+            animation: etherealGlow 3s infinite ease-in-out;
+        }
+
+        /* Shimmer effect setup */
+        .glass-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.08),
+                    transparent);
+            pointer-events: none;
+            z-index: 2;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Shimmer effect - only on hover */
+        .glass-card:hover::after {
+            opacity: 1;
+            animation: shimmer 2s ease-in-out;
+        }
+
+        @keyframes etherealGlow {
+
+            0%,
+            100% {
+                transform: scale(0.9) rotate(0deg);
+                opacity: 0.4;
+            }
+
+            25% {
+                transform: scale(1.1) rotate(5deg);
+                opacity: 0.7;
+            }
+
+            50% {
+                transform: scale(1.05) rotate(-3deg);
+                opacity: 0.6;
+            }
+
+            75% {
+                transform: scale(1.15) rotate(8deg);
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+        /* Optional: Content styling to ensure proper layering */
+        .glass-card>* {
+            position: relative;
+            z-index: 3;
+        }
+
+        /* Variant: Ultra-minimal version */
+        .glass-card-minimal {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(25px) brightness(1.1);
+            -webkit-backdrop-filter: blur(25px) brightness(1.1);
+            border-radius: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card-minimal:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark-bg-secondary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-saffron);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e66000;
+            /* Slightly darker saffron on hover */
+        }
+
+        /* Active tab styling - Saffron-Green gradient */
+        .tab-button.active,
+        .ai-tab-button.active {
+            background-image: linear-gradient(to right, var(--accent-saffron), var(--accent-emerald));
+            color: white;
+            box-shadow: 0 6px 20px rgba(255, 107, 0, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Modal specific styles - ENHANCED FOR GLOSSY/GLASS EFFECT */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            /* Darker overlay */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            /* Enhanced Glassmorphism for Modal */
+            background: linear-gradient(135deg, rgba(24, 24, 48, 0.95), rgba(30, 30, 60, 0.9));
+            /* More opaque blueish gradient */
+            backdrop-filter: blur(25px);
+            /* Increased blur for stronger glass effect */
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(120, 140, 180, 0.8);
+            /* Lighter, more reflective blue border */
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+            /* Stronger outer shadow, more prominent inner white tint */
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            text-align: center;
+            position: relative;
+            max-width: 90%;
+            width: 500px;
+            transform: translateY(-50px);
+            /* Start further up for a more noticeable drop-in */
+            opacity: 0;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s ease-out;
+            /* Smoother, bouncier transition */
+            color: var(--dark-text-primary);
+        }
+
+        .modal-overlay.show .modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .modal-close-button {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 2.5rem;
+            color: var(--dark-text-secondary);
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .modal-close-button:hover {
+            color: var(--accent-saffron);
+        }
+
+        /* Navbar width transition */
+        #navbar .container {
+            max-width: 80%;
+            transition: max-width 0.3s ease-in-out, padding 0.3s ease-in-out;
+        }
+
+        #navbar.scrolled .container {
+            max-width: 100%;
+        }
+
+        /* Animations */
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-slide-in-left {
+            animation: slideInLeft 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-slide-in-right {
+            animation: slideInRight 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateX(50px);
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-scale-in {
+            animation: scaleIn 0.6s ease-out forwards;
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Hero stats animation delay */
+        .hero-stat-card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .hero-stat-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .hero-stat-card:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .hero-stat-card:nth-child(4) {
+            animation-delay: 0.8s;
+        }
+
+        /* Contact form input focus effect */
+        .contact-input:focus {
+            outline: none;
+            /* Remove default outline */
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.5);
+            /* Digital Blue glow */
+            border-color: var(--accent-blue);
+            /* Add border color on focus */
+        }
+
+        /* Style for AI response text to render Markdown */
+        .ai-markdown-output strong {
+            font-weight: bold;
+            color: var(--accent-blue);
+        }
+
+        .ai-markdown-output ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            padding-left: 0;
+        }
+
+        .ai-markdown-output ol {
+            list-style-type: decimal;
+            margin-left: 20px;
+            padding-left: 0;
+        }
+
+        .ai-markdown-output li {
+            margin-bottom: 5px;
+        }
+
+        .ai-markdown-output h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--accent-blue);
+            margin-bottom: 0.75rem;
+        }
+
+        .ai-markdown-output p {
+            margin-bottom: 1rem;
+        }
+
+        .ai-markdown-output {
+            white-space: pre-wrap;
+            color: var(--dark-text-primary);
+        }
+
+        /* Specific AI sections card style - ENHANCED FOR GLOSSY/GLASS EFFECT */
+        .ai-section-card {
+            background: linear-gradient(135deg, rgba(24, 24, 48, 0.85), rgba(30, 30, 60, 0.75));
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 10px;
+            border: 1px solid rgba(58, 74, 106, 0.6);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+
+
+
+        .ai-input-field {
+            background-color: rgba(24, 24, 48, 0.7);
+            /* Darker blue input field */
+            border: 1px solid var(--dark-border);
+            color: var(--dark-text-primary);
+            transition: all 0.3s ease;
+            padding: 0.875rem 1.25rem;
+            border-radius: 0.5rem;
+        }
+
+        .ai-input-field::placeholder {
+            color: var(--dark-text-secondary);
+        }
+
+        .ai-input-field:focus {
+            outline: none;
+            border-color: var(--accent-saffron);
+            box-shadow: 0 0 0 4px rgba(255, 107, 0, 0.2);
+        }
+
+        .ai-response-container {
+            background-color: rgba(16, 16, 37, 0.8);
+            /* Darker blue background for response */
+            border: 1px solid var(--dark-border);
+            border-left: 5px solid var(--accent-saffron);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            color: var(--dark-text-primary);
+        }
+
+        .ai-loading-indicator {
+            color: var(--accent-saffron);
+        }
+
+        /* Common shimmer effect for buttons - made more subtle and slower */
+        .shimmer-button {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: all 0.3s ease;
+            /* Ensure general button transitions are smooth */
+        }
+
+        .shimmer-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 30%;
+            /* Width of the shimmer */
+            height: 100%;
+            background: rgba(255, 255, 255, 0.08);
+            /* Reduced opacity */
+            transform: skewX(-20deg);
+            transition: transform 0.7s ease-out;
+            /* Slower transition */
+            z-index: -1;
+            /* Place behind button content */
+        }
+
+        .shimmer-button:hover::before {
+            transform: translateX(400%);
+            /* Move shimmer across the button */
+        }
+
+        /* Button styling for AI actions */
+        .ai-action-button {
+            color: white;
+            background-color: transparent;
+            border: 1px solid white;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+
+        .ai-action-button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .ai-action-button:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 10px rgba(255, 107, 0, 0.2);
+        }
+
+        /* Specific AI action buttons for doctor */
+        #book-medicine-button {
+            background-image: linear-gradient(to right, var(--accent-blue), #1D4ED8);
+            box-shadow: 0 4-x 15px rgba(37, 99, 235, 0.4);
+        }
+
+        #book-medicine-button:hover {
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.6);
+        }
+
+        #book-appointment-button {
+            background-image: linear-gradient(to right, var(--accent-emerald), #008f6a);
+            box-shadow: 0 4px 15px rgba(0, 179, 131, 0.4);
+        }
+
+        #book-appointment-button:hover {
+            box-shadow: 0 6px 20px rgba(0, 179, 131, 0.6);
+        }
+
+        /* Button primary and secondary adjustments for dark theme */
+        .btn-primary {
+            background-image: linear-gradient(to right, var(--accent-saffron), var(--accent-blue));
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 6px 20px rgba(255, 107, 0, 0.5);
+            background-image: linear-gradient(to right, #e66000, #1d4ed8);
+        }
+
+        .btn-secondary {
+            background-color: var(--dark-bg-tertiary);
+            border: 1px solid var(--dark-border);
+            color: var(--dark-text-primary);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: #202040;
+            /* Blueish hover */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Scroll to top button */
+        #scroll-to-top-button {
+            position: fixed;
+            bottom: 7rem;
+            /* Adjusted to be above chatbot button */
+            right: 2rem;
+            background-image: linear-gradient(to right, var(--accent-emerald), var(--accent-blue));
+            color: white;
+            padding: 0.75rem;
+            border-radius: 9999px;
+            box-shadow: 0 4px 15px rgba(0, 179, 131, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+            z-index: 999;
+        }
+
+        #scroll-to-top-button.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        #scroll-to-top-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 179, 131, 0.6);
+        }
+
+        /* Chatbot button */
+        #chatbot-button {
+            position: fixed;
+            bottom: 2rem;
+            /* Adjusted to be below scroll-to-top */
+            right: 2rem;
+            /* Align with scroll-to-top */
+            background-image: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+            color: white;
+            padding: 0.75rem;
+            /* Make it a square button like scroll-to-top */
+            width: 3.5rem;
+            /* Explicit width */
+            height: 3.5rem;
+            /* Explicit height */
+            border-radius: 9999px;
+            /* Make it round */
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 999;
+            /* Ensure it's above other content */
+        }
+
+        #chatbot-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.6);
+        }
+
+
+        /* Map canvas styling */
+        #india-map-canvas {
+            background-color: var(--dark-bg-secondary);
+            /* Dark blue background for the map */
+            border-radius: 0.75rem;
+            border: 1px solid var(--dark-border);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            display: block;
+            /* Ensures it takes full width */
+            width: 100%;
+            /* Make it responsive */
+            height: 400px;
+            /* Fixed height, or adjust as needed */
+            touch-action: none;
+            /* Disable default touch actions */
+        }
+
+        /* Base style for elements that will animate on scroll - initially hidden */
+        .scroll-fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            /* Start slightly below */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            /* Smooth transition */
+        }
+
+        /* When 'is-visible' class is added by JS, apply final state */
+        .scroll-fade-in.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Chatbot Modal specific styles (positioned above button) */
+        #chatbot-modal-overlay {
+            position: fixed;
+            bottom: 6.5rem;
+            /* Position above chatbot button (2rem button height + 4.5rem for spacing) */
+            right: 2rem;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            /* No flex centering here */
+        }
+
+        #chatbot-modal-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #chatbot-modal-overlay .modal-content {
+            width: 350px;
+            /* Adjusted width for chat */
+            max-height: 500px;
+            /* Max height for chat content */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            padding: 1.5rem;
+            /* Adjusted padding */
+            border-radius: 1rem;
+            /* Adjusted border radius */
+            text-align: left;
+            /* Align text left within modal */
+            transform: translateY(20px);
+            /* Initial slight offset for animation */
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+        }
+
+        #chatbot-modal-overlay.show .modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        #chatbot-messages {
+            flex-grow: 1;
+            overflow-y: auto;
+            /* Scrollable message area */
+            padding-right: 10px;
+            /* Space for scrollbar */
+            margin-bottom: 1rem;
+            max-height: calc(500px - 120px);
+            /* Adjust based on header/footer within modal */
+            text-align: left;
+            /* Ensure text aligns left */
+        }
+
+        .chatbot-message {
+            margin-bottom: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.75rem;
+            max-width: 85%;
+            word-wrap: break-word;
+            /* Ensure long words wrap */
+        }
+
+        .chatbot-message.user {
+            background-color: var(--accent-blue);
+            color: white;
+            margin-left: auto;
+            /* Align user messages to the right */
+            border-bottom-right-radius: 0;
+        }
+
+        .chatbot-message.ai {
+            background-color: var(--dark-bg-secondary);
+            color: var(--dark-text-primary);
+            margin-right: auto;
+            /* Align AI messages to the left */
+            border-bottom-left-radius: 0;
+        }
+
+        #chatbot-input-container {
+            display: flex;
+            gap: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid var(--dark-border);
+        }
+
+        #chatbot-input {
+            flex-grow: 1;
+            background-color: rgba(24, 24, 48, 0.7);
+            /* Blueish input background */
+            border: 1px solid var(--dark-border);
+            color: var(--dark-text-primary);
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+        }
+
+        #chatbot-send-button {
+            background-image: linear-gradient(to right, var(--accent-emerald), var(--accent-blue));
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        #chatbot-send-button:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        #chatbot-loading-indicator {
+            color: var(--accent-saffron);
+            margin-top: 1rem;
+        }
+
+        /* Problem Reporting Form specific styles */
+        .problem-form-input {
+            background-color: rgba(24, 24, 48, 0.7);
+            /* Blueish input background */
+            border: 1px solid var(--dark-border);
+            color: var(--dark-text-primary);
+            transition: all 0.3s ease;
+            padding: 0.875rem 1.25rem;
+            border-radius: 0.5rem;
+        }
+
+        .problem-form-input::placeholder {
+            color: var(--dark-text-secondary);
+        }
+
+        .problem-form-input:focus {
+            outline: none;
+            border-color: var(--accent-saffron);
+            box-shadow: 0 0 0 4px rgba(255, 107, 0, 0.2);
+        }
+
+        /* Google Translate specific styles */
+        #google_translate_element {
+            display: none;
+        }
+
+        iframe,
+        .goog-logo-link,
+        .goog-te-gadget {
+            display: none !important;
+        }
+
+
+        .language-switcher {
+            margin-top: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+            font-size: 0.9rem;
+            background-color: rgba(24, 24, 48, 0.7);
+            border-radius: 0.75rem;
+            padding: 0.75rem 1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--dark-border);
+            max-width: 97%;
+            margin-right: auto;
+        }
+
+        .language-switcher span {
+            cursor: pointer;
+            color: var(--dark-text-secondary);
+            text-decoration: none;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.375rem;
+            transition: all 0.2s ease-in-out;
+            font-weight: 500;
+        }
+
+        .language-switcher span:hover {
+            color: var(--accent-saffron);
+            /* Saffron on hover */
+            background-color: rgba(255, 107, 0, 0.08);
+            /* Subtle background on hover */
+            text-decoration: underline;
+            /* Underline on hover */
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+    <!-- Data for dynamic content (for demonstration purposes) -->
+
+
+    <!-- Header -->
+    <header id="navbar" style="zoom: 90%;"
+        class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-4 bg-dark-bg-tertiary/90 backdrop-blur-lg shadow-xl">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-2 text-2xl font-bold">
+                    <span class="gradient-text font-orbitron">Digital Bharat</span>
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden lg:flex items-center space-x-8">
+                    <a href="#home" class="text-dark-text-primary hover:text-white transition-colors relative group">
+                        Home
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-accent-saffron transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#about" class="text-dark-text-primary hover:text-white transition-colors relative group">
+                        About Mission
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-accent-saffron transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#focus-areas"
+                        class="text-dark-text-primary hover:text-white transition-colors relative group">
+                        Focus Areas
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-accent-saffron transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#ai-solutions"
+                        class="text-dark-text-primary hover:text-white transition-colors relative group">
+                        AI Solutions
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-accent-saffron transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#impact" class="text-dark-text-primary hover:text-white transition-colors relative group">
+                        Impact Dashboard
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-accent-saffron transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#get-involved"
+                        class="text-dark-text-primary hover:text-white transition-colors relative group">
+                        Get Involved
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-accent-saffron transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#schemes" class="text-dark-text-primary hover:text-white transition-colors relative group">
+                        Schemes
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-accent-saffron transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#contact"
+                        class="btn-primary font-semibold py-2.5 px-6 rounded-full shadow-lg hover:scale-105 transform transition-all shimmer-button">
+                        Contact Us
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden">
+                    <button id="menu-button" class="text-dark-text-primary focus:outline-none">
+                        <i class="material-icons notranslate w-7 h-7">menu</i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-dark-bg-tertiary/90 backdrop-blur-lg py-6">
+            <nav class="flex flex-col items-center space-y-4">
+                <a href="#home" class="text-dark-text-primary hover:text-white transition-colors text-lg py-2">Home</a>
+                <a href="#about" class="text-dark-text-primary hover:text-white transition-colors text-lg py-2">About
+                    Mission</a>
+                <a href="#focus-areas"
+                    class="text-dark-text-primary hover:text-white transition-colors text-lg py-2">Focus
+                    Areas</a>
+                <a href="#ai-solutions"
+                    class="text-dark-text-primary hover:text-white transition-colors text-lg py-2">AI
+                    Solutions</a>
+                <a href="#impact" class="text-dark-text-primary hover:text-white transition-colors text-lg py-2">Impact
+                    Dashboard</a>
+                <a href="#get-involved"
+                    class="text-dark-text-primary hover:text-white transition-colors text-lg py-2">Get
+                    Involved</a>
+                <a href="#schemes"
+                    class="text-dark-text-primary hover:text-white transition-colors text-lg py-2">Schemes</a>
+                <a href="#contact"
+                    class="btn-primary font-semibold py-2.5 px-6 rounded-full shadow-lg hover:scale-105 transform transition-all text-lg mt-4 shimmer-button">Contact
+                    Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="pt-20">
+
+
+        <!-- Hero Section -->
+
+        <section id="home"
+            class="min-h-screen bg-gradient-to-br from-[#0a0f1a] via-[#0e1420] to-[#111826] flex items-center pt-20 relative overflow-hidden"
+            <!-- Background Elements -->
+            <div class="absolute inset-0 z-0">
+                <!-- Enhanced Tricolor Gradient Overlay -->
+                <div
+                    class="absolute inset-0 bg-gradient-to-br from-saffron/25 via-transparent to-dark-green/25 mix-blend-screen">
+                </div>
+                <div
+                    class="absolute inset-0 bg-gradient-to-tl from-bharat-green/20 via-transparent to-bharat-saffron/25 mix-blend-screen">
+                </div>
+
+                <!-- Digital Grid Pattern -->
+                <div class="absolute inset-0 opacity-30"
+                    style="background-image: radial-gradient(circle at 2px 2px, rgba(255,153,51,0.25) 1px, transparent 0); background-size: 60px 60px;">
+                </div>
+                <div class="absolute inset-0 opacity-20"
+                    style="background-image: linear-gradient(rgba(34,139,34,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(34,139,34,0.1) 1px, transparent 1px); background-size: 80px 80px;">
+                </div>
+
+                <!-- Ashoka Chakra Inspired Elements -->
+                <div
+                    class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 border border-saffron/20 rounded-full animate-spin-slow">
+                </div>
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 border border-dark-green/20 rounded-full animate-spin-slow"
+                    style="animation-direction: reverse; animation-duration: 15s;"></div>
+            </div>
+
+            <!-- Content -->
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center py-20">
+
+                    <!-- Left Column -->
+                    <div class="text-center md:text-left space-y-8">
+                        <div class="space-y-6">
+                            <h1
+                                class="text-5xl sm:text-6xl lg:text-7xl font-extrabold font-orbitron leading-tight tracking-widest">
+                                <span class="block text-white animate-slide-in-left">Building a</span>
+                                <span
+                                    class="block bg-gradient-to-r from-saffron via-bharat-saffron to-orange-400 bg-clip-text text-transparent animate-gradient-shift bg-[length:200%_200%] font-black mt-2">
+                                    Digital Bharat
+                                </span>
+                                <span
+                                    class="block text-4xl sm:text-5xl lg:text-6xl mt-4 bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent">
+                                    Adopt a Village Digitally
+                                </span>
+                            </h1>
+                            <div class="flex justify-center md:justify-start space-x-2">
+                                <div class="w-8 h-1 bg-saffron rounded-full animate-pulse"></div>
+                                <div class="w-8 h-1 bg-white rounded-full animate-pulse" style="animation-delay: 0.2s;">
+                                </div>
+                                <div class="w-8 h-1 bg-dark-green rounded-full animate-pulse"
+                                    style="animation-delay: 0.4s;"></div>
+                            </div>
+                        </div>
+
+                        <p class="mt-8 text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto md:mx-0 leading-relaxed">
+                            A pioneering mission to transform Indian Villages into a
+                            <span class="text-saffron font-bold bg-saffron/10 px-2 py-1 rounded">digitally empowered
+                                society</span>
+                            and
+                            <span class="text-dark-green font-bold bg-dark-green/10 px-2 py-1 rounded">knowledge
+                                economy</span>.
+                        </p>
+
+                        <div class="mt-12 flex flex-col sm:flex-row justify-center md:justify-start gap-4 sm:gap-6">
+                            <a href="#focus-areas"
+                                class="group relative bg-gradient-to-r from-saffron via-bharat-saffron to-orange-500 text-white font-bold py-3.5 px-8 sm:px-10 rounded-full shadow-2xl hover:shadow-saffron/40 transform hover:scale-105 transition-all duration-300 overflow-hidden">
+                                <span class="relative z-10 font-semibold">Explore Vision</span>
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                </div>
+                                <div class="absolute -top-1 -right-1 w-6 h-6 bg-white/20 rounded-full animate-ping">
+                                </div>
+                            </a>
+
+                            <a href="#get-involved"
+                                class="group relative border-2 border-dark-green bg-gradient-to-r from-dark-green/10 to-bharat-green/10 text-dark-green font-bold py-3.5 px-8 sm:px-10 rounded-full hover:bg-gradient-to-r hover:from-dark-green hover:to-bharat-green hover:text-white transform hover:scale-105 transition-all duration-300 backdrop-blur-sm">
+                                <span class="relative z-10 font-semibold">Get Involved</span>
+                            </a>
+                        </div>
+
+                        <div
+                            class="language-switcher notranslate bg-white/5 backdrop-blur-md border border-white/20 rounded-2xl p-3 inline-block mt-10 shadow-lg">
+                            <div class="flex flex-wrap justify-center md:justify-start gap-1 text-sm">
+                                <span onclick="autoTranslate('en')" aria-current="true"
+                                    class="text-white px-3 py-2 rounded-lg font-bold cursor-pointer shadow-lg transform hover:scale-105 transition-all duration-200">English</span>
+                                <span class="text-white/30 px-1">|</span>
+                                <span onclick="autoTranslate('hi')"
+                                    class="text-gray-300 hover:text-saffron hover:bg-saffron/10 px-3 py-2 rounded-lg cursor-pointer transition-all duration-200 font-medium">हिंदी</span>
+                                <span class="text-white/30 px-1">|</span>
+                                <span onclick="autoTranslate('bn')" class="lang-btn">বাংলা</span>
+                                <span class="text-white/30 px-1">|</span>
+                                <span onclick="autoTranslate('ta')" class="lang-btn">தமிழ்</span>
+                                <span class="text-white/30 px-1">|</span>
+                                <span onclick="autoTranslate('te')" class="lang-btn">తెలుగు</span>
+                                <span class="text-white/30 px-1">|</span>
+                                <span onclick="autoTranslate('mr')" class="lang-btn">मराठी</span>
+                                <span class="text-white/30 px-1">|</span>
+                                <span onclick="autoTranslate('gu')" class="lang-btn">ગુજરાતી</span>
+                                <span class="text-white/30 px-1">|</span>
+                                <span onclick="autoTranslate('kn')" class="lang-btn">ಕನ್ನಡ</span>
+                                <span class="text-white/30 px-1">|</span>
+                                <span onclick="autoTranslate('ml')" class="lang-btn">മലയാളം</span>
+                                <span class="text-white/30 px-1">|</span>
+                                <span onclick="autoTranslate('pa')" class="lang-btn">ਪੰਜਾਬੀ</span>
+                                <span class="text-white/30 px-1">|</span>
+                                <span onclick="autoTranslate('ur')" class="lang-btn">اُردُو</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Stat Cards -->
+                    <div class="mt-16 md:mt-0">
+                        <div class="grid grid-cols-2 gap-4 md:gap-8">
+                            <!-- Stat Cards -->
+                            <div
+                                class="group bg-gradient-to-br from-slate-800/50 via-slate-700/40 to-slate-800/60 backdrop-blur-lg border border-white/10 rounded-2xl p-6 sm:p-8 text-center transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-saffron/50 animate-fade-in">
+                                <div class="flex justify-center mb-3">
+                                    <i
+                                        class="material-icons text-5xl text-saffron drop-shadow-md group-hover:animate-pulse">groups</i>
+                                </div>
+                                <p class="text-white text-5xl font-extrabold">1.2M</p>
+                                <p class="mt-1 text-sm text-gray-300 tracking-wide">Villages Impacted</p>
+                            </div>
+                            <div class="group bg-gradient-to-br from-slate-800/50 via-slate-700/40 to-slate-800/60 backdrop-blur-lg border border-white/10 rounded-2xl p-6 sm:p-8 text-center transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-saffron/50 animate-fade-in"
+                                style="animation-delay: 0.2s;">
+                                <div class="flex justify-center mb-3">
+                                    <i
+                                        class="material-icons text-5xl text-saffron drop-shadow-md group-hover:animate-pulse">wifi</i>
+                                </div>
+                                <p class="text-white text-5xl font-extrabold">98%</p>
+                                <p class="mt-1 text-sm text-gray-300 tracking-wide">Connectivity</p>
+                            </div>
+                            <div class="group bg-gradient-to-br from-slate-800/50 via-slate-700/40 to-slate-800/60 backdrop-blur-lg border border-white/10 rounded-2xl p-6 sm:p-8 text-center transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-saffron/50 animate-fade-in"
+                                style="animation-delay: 0.4s;">
+                                <div class="flex justify-center mb-3">
+                                    <i
+                                        class="material-icons text-5xl text-saffron drop-shadow-md group-hover:animate-pulse">school</i>
+                                </div>
+                                <p class="text-white text-5xl font-extrabold">650K</p>
+                                <p class="mt-1 text-sm text-gray-300 tracking-wide">Digital Centers</p>
+                            </div>
+                            <div class="group bg-gradient-to-br from-slate-800/50 via-slate-700/40 to-slate-800/60 backdrop-blur-lg border border-white/10 rounded-2xl p-6 sm:p-8 text-center transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-saffron/50 animate-fade-in"
+                                style="animation-delay: 0.6s;">
+                                <div class="flex justify-center mb-3">
+                                    <i
+                                        class="material-icons text-5xl text-saffron drop-shadow-md group-hover:animate-pulse">person_add</i>
+                                </div>
+                                <p class="text-white text-5xl font-extrabold">4.7M</p>
+                                <p class="mt-1 text-sm text-gray-300 tracking-wide">Volunteers</p>
+                            </div>
+                        </div>
+
+                        <!-- Rotating Bharat Icon -->
+                        <div class="mt-12 flex justify-center">
+                            <div class="relative w-64 h-64">
+                                <div
+                                    class="absolute w-full h-full border-4 border-t-saffron border-r-bharat-saffron border-b-orange-500 border-l-transparent rounded-full animate-spin-slow">
+                                </div>
+                                <div class="absolute inset-6 border-2 border-white/40 rounded-full animate-pulse"></div>
+                                <div class="absolute inset-12 border-2 border-t-dark-green border-r-bharat-green border-b-green-600 border-l-transparent rounded-full animate-spin-slow"
+                                    style="animation-direction: reverse; animation-duration: 8s;"></div>
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div class="rounded-full p-4 backdrop-blur-sm notranslate"
+                                        style="background-color: rgb(9, 70, 9);">
+                                        <i class="material-icons text-orange-400 text-4xl">diversity_2</i>
+                                    </div>
+                                </div>
+                                <div
+                                    class="absolute top-0 left-1/2 w-3 h-3 bg-saffron rounded-full animate-spin-slow origin-[0_128px] transform -translate-x-1/2">
+                                </div>
+                                <div class="absolute top-1/2 right-0 w-2 h-2 bg-dark-green rounded-full animate-spin-slow origin-[-128px_0] transform -translate-y-1/2"
+                                    style="animation-delay: -2s;"></div>
+                                <div class="absolute bottom-0 left-1/2 w-2 h-2 bg-white rounded-full animate-spin-slow origin-[0_-128px] transform -translate-x-1/2"
+                                    style="animation-delay: -4s;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Tricolor Accent -->
+            <div class="absolute bottom-0 left-0 right-0 h-1">
+                <div class="flex h-full">
+                    <div class="flex-1 bg-gradient-to-r from-transparent to-saffron/80"></div>
+                    <div class="flex-1 bg-white/60"></div>
+                    <div class="flex-1 bg-gradient-to-r from-dark-green/80 to-transparent"></div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- About Mission Section -->
+        <section id="about" class="py-20 sm:py-28 section-gradient-bg relative overflow-hidden">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 section-content scroll-fade-in">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl sm:text-5xl font-bold text-white font-orbitron">About Our <span
+                            class="gradient-text">Mission</span></h2>
+                    <p class="mt-5 text-lg text-dark-text-secondary max-w-3xl mx-auto">
+                        Driving transformation through nine key areas, fostering inclusive growth and innovation.
+                    </p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <p class="text-lg text-dark-text-primary leading-relaxed mb-6">
+                            Digital Bharat Foundation is committed to transforming rural India through innovative
+                            digital solutions. Our mission is to bridge the technological gap, empower communities, and
+                            foster sustainable development in every village. We believe that access to digital resources
+                            is a fundamental right that can unlock immense potential.
+                        </p>
+                        <p class="text-lg text-dark-text-primary leading-relaxed mb-6">
+                            We focus on key areas like digital literacy, accessible healthcare, renewable energy, and
+                            smart agriculture, leveraging cutting-edge technology to create lasting impact. Our approach
+                            is collaborative, working closely with local communities, government bodies, and volunteers
+                            to ensure our initiatives are effective and sustainable.
+                        </p>
+                        {% if data.about_mission_challenges %}
+                        <ul class="space-y-4 text-dark-text-primary">
+                            {% for challenge in data.about_mission_challenges %}
+                            <li class="flex items-center text-lg">
+                                <i class="material-icons notranslate text-accent-emerald mr-3 w-6 h-6">{{ challenge.icon
+                                    }}</i>
+                                <strong>{{ challenge.value }}</strong> {{ challenge.metric }}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        {% else %}
+                        <p class="text-dark-text-secondary">Mission challenges data not available.</p>
+                        {% endif %}
+                    </div>
+                    <div>
+                        <img src="static/images/about_us.png" alt="Our Mission"
+                            class="rounded-xl shadow-2xl transform hover:scale-103 transition duration-300">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problems Faced Section -->
+        <section id="problems-faced" class="py-10 md:py-16 section-gradient-bg overflow-hidden">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 section-content scroll-fade-in">
+                <!-- Section Heading -->
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white font-orbitron">
+                        Challenges We <span class="gradient-text">Address</span>
+                    </h2>
+                    <p class="mt-3 text-base text-dark-text-secondary max-w-2xl mx-auto">
+                        Understanding the core problems faced by Indian communities to tailor effective solutions.
+                    </p>
+                </div>
+
+                <!-- Problem Cards -->
+                {% if data.problems_faced %}
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {% for problem in data.problems_faced %}
+                    <div
+                        class="glass-card p-12 rounded-xl text-center transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg">
+                        <div
+                            class="w-12 h-12 mx-auto mb-3 flex items-center justify-center rounded-full bg-gradient-to-r from-{{ problem.color_from }} to-{{ problem.color_to }} shadow-md">
+                            <i class="material-icons notranslate text-white text-2xl">{{ problem.icons }}</i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-1">{{ problem.title }}</h3>
+                        <p class="text-dark-text-secondary text-sm leading-relaxed">{{ problem.description }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="text-center text-dark-text-secondary">No problems with solutions available.</p>
+                {% endif %}
+            </div>
+        </section>
+
+
+        <!-- Our Solution Section -->
+        <section id="solution" class="py-20 sm:py-28 section-gradient-bg relative overflow-hidden">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 section-content scroll-fade-in">
+                <!-- Section Heading -->
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl sm:text-5xl font-bold text-white font-orbitron">
+                        Our Innovative <span class="gradient-text">Solutions</span>
+                    </h2>
+                    <p class="mt-5 text-lg text-dark-text-secondary max-w-3xl mx-auto">
+                        Key projects driving the Digital India mission forward, empowering citizens.
+                    </p>
+                </div>
+
+                <!-- Feature Cards -->
+                {% if data.our_solution_features %}
+                <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                    {% for feature in data.our_solution_features %}
+                    <div
+                        class="glass-card p-8 rounded-2xl text-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                        <div
+                            class="w-16 h-16 mx-auto mb-4 flex items-center justify-center rounded-full bg-gradient-to-r from-{{ feature.color_from }} to-{{ feature.color_to }} to-orange-800 shadow-md">
+                            <i class="material-icons notranslate text-white text-3xl">{{ feature.icon }}</i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-white mb-2">{{ feature.title }}</h3>
+                        <p class="text-dark-text-secondary text-base leading-relaxed">{{ feature.description }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="text-center text-dark-text-secondary">Solution features not available.</p>
+                {% endif %}
+
+                <!-- Key Feature Tags -->
+                <div class="mt-16 text-center">
+                    <h3 class="text-2xl font-semibold text-white mb-6 font-orbitron">Key Features of Our Approach:
+                    </h3>
+                    {% if data.our_solution_key_features %}
+                    <div class="flex flex-wrap justify-center gap-3">
+                        {% for feature in data.our_solution_key_features %}
+                        <span
+                            class="bg-gradient-to-r from-[var(--accent-emerald)] to-cyan-700 text-white text-sm font-medium px-5 py-2 rounded-full shadow-md hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-0.5">
+                            {{ feature }}
+                        </span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <p class="text-dark-text-secondary">Key solution features not available.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Focus Areas Section -->
+        <section id="focus-areas" class="py-20 sm:py-28 section-gradient-bg relative overflow-hidden">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 section-content scroll-fade-in">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl sm:text-5xl font-bold text-white font-orbitron">
+                        Our Key <span class="gradient-text">Focus Areas</span>
+                    </h2>
+                    <p class="mt-5 text-lg text-dark-text-secondary max-w-3xl mx-auto">
+                        Driving transformation through nine key areas, fostering inclusive growth and innovation.
+                    </p>
+                </div>
+
+                {% if data.focus_areas_content %}
+                <!-- Horizontal Scrollable Tab Buttons -->
+                <div
+                    class="flex justify-start md:justify-center gap-4 overflow-x-auto pb-4 snap-x snap-mandatory px-2 md:px-0 mb-12">
+                    {% for area in data.focus_areas_content %}
+                    <button
+                        class="tab-button snap-start shrink-0 px-6 py-3 rounded-full bg-dark-bg-tertiary text-dark-text-primary shadow-md transition duration-300 hover:bg-gradient-to-r hover:from-[var(--accent-saffron)] hover:to-[var(--accent-emerald)] hover:text-white font-medium flex items-center gap-2 border border-dark-border shimmer-button"
+                        style="margin-top: 10px;" data-tab="{{ area.id }}">
+                        <i class="material-icons notranslate text-lg">{{ area.icon }}</i>
+                        <span class="whitespace-nowrap">{{ area.tab_label }}</span>
+                    </button>
+                    {% endfor %}
+                </div>
+
+                <!-- Tab Content Area (Dynamic) -->
+                <div id="tab-content-container"
+                    class="bg-dark-bg-tertiary rounded-xl shadow-xl p-6 md:p-10 glass-card min-h-[200px]">
+                    <!-- JavaScript dynamically injects tab content here -->
+                    <!-- Default message for focus areas -->
+
+                    <div class="flex flex-col justify-center items-center py-10 text-dark-text-secondary">
+                        <i class="material-icons notranslate text-6xl mb-4 text-accent-saffron">lightbulb</i>
+                        <p class="text-xl font-semibold mb-2">Select a Focus Area to learn more!</p>
+                        <p class="text-lg text-center max-w-md">Click on any of the tabs above to explore our key
+                            initiatives and how we're making a difference.</p>
+                    </div>
+                </div>
+
+                <!-- Click Count & User Stats Section -->
+                <div class="flex flex-wrap gap-6 mt-10">
+
+                    <!-- Active Users Last 24 Hours -->
+                    <div
+                        class="glass-card p-6 flex-1 min-w-[250px] flex items-center gap-5 transition-all duration-300 hover:border-accent-emerald/50">
+                        <div class="bg-accent-emerald/10 p-4 rounded-full flex items-center justify-center">
+                            <i class="material-icons notranslate text-3xl text-accent-emerald">schedule</i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium text-dark-text-secondary">Active Users (24h)</p>
+                            <p id="active-users-24h" class="text-3xl font-bold text-white tracking-tight">0</p>
+                        </div>
+                    </div>
+
+                    <!-- Total Users All Time -->
+                    <div
+                        class="glass-card p-6 flex-1 min-w-[250px] flex items-center gap-5 transition-all duration-300 hover:border-accent-saffron/50">
+                        <div class="bg-accent-saffron/10 p-4 rounded-full flex items-center justify-center">
+                            <i class="material-icons notranslate text-3xl text-accent-saffron">groups</i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium text-dark-text-secondary">Total Users (All Time)</p>
+                            <p id="total-users-all-time" class="text-3xl font-bold text-white tracking-tight">0</p>
+                        </div>
+                    </div>
+
+                    <!-- Click Count for Selected Tab -->
+                    <div id="tab-click-info"
+                        class="glass-card p-6 flex-1 min-w-[250px] flex items-center gap-5 transition-all duration-300 hover:border-accent-blue/50 hidden">
+                        <div class="bg-accent-blue/10 p-4 rounded-full flex items-center justify-center">
+                            <i class="material-icons notranslate text-3xl text-accent-blue">ads_click</i>
+                        </div>
+                        <div>
+                            <p id="click-count-text" class="text-sm font-medium text-dark-text-secondary">Clicked: 0
+                                times</p>
+                            <p id="active-status-text" class="text-lg font-bold text-white">Currently Active</p>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                {% else %}
+                <p class="text-center text-dark-text-secondary">Focus areas content not available.</p>
+                {% endif %}
+            </div>
+        </section>
+
+
+        <!-- AI Solutions Section -->
+        <section id="ai-solutions" class="py-20 sm:py-28 section-gradient-bg relative overflow-hidden">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 section-content scroll-fade-in">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl sm:text-5xl font-bold text-white font-orbitron">Our <span
+                            class="gradient-text">AI Solutions</span></h2>
+                    <p class="mt-5 text-lg text-gray-400 max-w-3xl mx-auto">
+                        Leveraging Artificial Intelligence to empower citizens and enhance services.
+                    </p>
+                </div>
+
+                <!-- AI Solution Tab Buttons -->
+                <div class="flex justify-center mb-12 space-x-4 overflow-x-auto pb-4">
+                    <button
+                        class="ai-tab-button px-8 py-4 rounded-full text-gray-300 bg-gray-800 hover:bg-amber-500 hover:text-white transition duration-300 flex items-center whitespace-nowrap shadow-lg hover:shadow-xl glass-card shimmer-button"
+                        data-tab="ai-doctor-tab">
+                        <i class="material-icons notranslate w-6 h-6 mr-3">local_hospital</i> AI Doctor
+                    </button>
+                    <button
+                        class="ai-tab-button px-8 py-4 rounded-full text-gray-300 bg-gray-800 hover:bg-amber-500 hover:text-white transition duration-300 flex items-center whitespace-nowrap shadow-lg hover:shadow-xl glass-card shimmer-button"
+                        data-tab="ai-govt-options-tab">
+                        <i class="material-icons notranslate w-6 h-6 mr-3">account_balance</i> Govt. AI
+                    </button>
+                    <button
+                        class="ai-tab-button px-8 py-4 rounded-full text-gray-300 bg-gray-800 hover:bg-amber-500 hover:text-white transition duration-300 flex items-center whitespace-nowrap shadow-lg hover:shadow-xl glass-card shimmer-button"
+                        data-tab="solar-calculator-tab">
+                        <i class="material-icons notranslate w-6 h-6 mr-3">solar_power</i> Solar Calculator
+                    </button>
+                </div>
+
+                <!-- AI Usage Statistics -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                    <!-- AI Doctor Usage -->
+                    <div
+                        class="usage-stat-card bg-gradient-to-br from-blue-600/20 to-blue-800/20 backdrop-blur-sm border border-blue-500/30 rounded-2xl p-6 group">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="p-3 bg-blue-500/20 rounded-xl group-hover:bg-blue-500/30 transition-colors">
+                                <i class="material-icons text-blue-400 text-2xl">local_hospital</i>
+                            </div>
+                            <div class="w-3 h-3 bg-blue-400 rounded-full pulse-dot"></div>
+                        </div>
+                        <h4 class="text-lg font-semibold text-white mb-2">AI Doctor Consultations</h4>
+                        <div class="flex items-baseline space-x-2">
+                            <span id="ai-doctor-usage"
+                                class="text-3xl font-bold text-blue-400 transition-all duration-500">0</span>
+                            <span class="text-blue-300 text-sm">queries</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mt-2">Medical advice requests</p>
+                        <div class="mt-4 flex items-center text-sm">
+                            <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse mr-2"></div>
+                            <span class="text-green-400">Active</span>
+                        </div>
+                    </div>
+
+                    <!-- Government AI Usage -->
+                    <div
+                        class="usage-stat-card bg-gradient-to-br from-emerald-600/20 to-emerald-800/20 backdrop-blur-sm border border-emerald-500/30 rounded-2xl p-6 group">
+                        <div class="flex items-center justify-between mb-4">
+                            <div
+                                class="p-3 bg-emerald-500/20 rounded-xl group-hover:bg-emerald-500/30 transition-colors">
+                                <i class="material-icons text-emerald-400 text-2xl">account_balance</i>
+                            </div>
+                            <div class="w-3 h-3 bg-emerald-400 rounded-full pulse-dot" style="animation-delay: 0.5s;">
+                            </div>
+                        </div>
+                        <h4 class="text-lg font-semibold text-white mb-2">Government Schemes</h4>
+                        <div class="flex items-baseline space-x-2">
+                            <span id="govt-ai-usage"
+                                class="text-3xl font-bold text-emerald-400 transition-all duration-500">0</span>
+                            <span class="text-emerald-300 text-sm">searches</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mt-2">Scheme recommendations</p>
+                        <div class="mt-4 flex items-center text-sm">
+                            <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse mr-2"></div>
+                            <span class="text-green-400">Active</span>
+                        </div>
+                    </div>
+
+                    <!-- Solar Calculator Usage -->
+                    <div
+                        class="usage-stat-card bg-gradient-to-br from-amber-600/20 to-amber-800/20 backdrop-blur-sm border border-amber-500/30 rounded-2xl p-6 group">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="p-3 bg-amber-500/20 rounded-xl group-hover:bg-amber-500/30 transition-colors">
+                                <i class="material-icons text-amber-400 text-2xl">solar_power</i>
+                            </div>
+                            <div class="w-3 h-3 bg-amber-400 rounded-full pulse-dot" style="animation-delay: 1s;"></div>
+                        </div>
+                        <h4 class="text-lg font-semibold text-white mb-2">Solar Calculations</h4>
+                        <div class="flex items-baseline space-x-2">
+                            <span id="solar-calc-usage"
+                                class="text-3xl font-bold text-amber-400 transition-all duration-500">0</span>
+                            <span class="text-amber-300 text-sm">estimates</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mt-2">Cost calculations done</p>
+                        <div class="mt-4 flex items-center text-sm">
+                            <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse mr-2"></div>
+                            <span class="text-green-400">Active</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Doctor Tab Content -->
+                <div id="ai-doctor-tab-content" class="ai-section-card p-8 sm:p-10 mt-8 hidden rounded-2xl">
+                    <h3 class="text-3xl font-bold text-white mb-6 text-center font-orbitron">AI Doctor</h3>
+                    <p class="mt-5 text-lg text-gray-400 max-w-3xl mx-auto text-center">
+                        Describe your symptoms, and our AI will provide initial guidance, suggest over-the-counter
+                        medicines, or recommend a doctor's appointment.
+                    </p>
+                    <div
+                        class="max-w-7xl mx-auto bg-gray-800/70 p-8 sm:p-10 rounded-2xl mt-8 shadow-inner border border-gray-700">
+                        <h4 class="text-2xl font-bold text-white mb-6 text-center font-orbitron">Describe Your Symptoms
+                        </h4>
+                        <div class="mb-6">
+                            <label for="medical-prompt-input" class="sr-only">Your Symptoms</label>
+                            <textarea id="medical-prompt-input" rows="6"
+                                class="w-full rounded-lg ai-input-field focus:ring-2 focus:ring-blue-400"
+                                placeholder="e.g., I have a persistent cough and a sore throat for three days."></textarea>
+                        </div>
+                        <div class="text-center">
+                            <div class="flex justify-center mt-6">
+                                <button id="generate-medical-response-button"
+                                    class="shimmer-button text-white font-semibold py-3 px-8 rounded-full border border-white hover:bg-white/10 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2">
+                                    <i class="material-icons notranslate text-white">medical_services</i>
+                                    Get AI Medical Advice
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="medical-response-container" class="mt-8 ai-response-container notranslate hidden">
+                            <div id="medical-loading-indicator" class="flex justify-center items-center py-4 hidden">
+                                <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-amber-500"></div>
+                                <p class="ml-3 text-gray-300">AI Doctor is analyzing...</p>
+                            </div>
+                            <div id="medical-response-text" class="leading-relaxed ai-markdown-output"></div>
+                            <div id="medical-actions" class="mt-6 space-y-4 hidden">
+                                <button id="book-medicine-button"
+                                    class="w-full font-semibold py-3 px-6 rounded-full shadow-md transition duration-300 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white shimmer-button">
+                                    Book Suggested Medicines
+                                </button>
+                                <button id="book-appointment-button"
+                                    class="w-full font-semibold py-3 px-6 rounded-full shadow-md transition duration-300 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white shimmer-button">
+                                    Book an Appointment with a Doctor
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Government AI Tab Content -->
+                <div id="ai-govt-options-tab-content" class="ai-section-card p-8 sm:p-10 rounded-2xl mt-8 hidden">
+                    <h3 class="text-3xl font-bold text-white mb-6 text-center font-orbitron">AI Government Options</h3>
+                    <p class="mt-5 text-lg text-gray-400 max-w-3xl mx-auto text-center">
+                        Enter your problem, and our AI will suggest relevant government schemes, options, and techniques
+                        to access them.
+                    </p>
+                    <div
+                        class="max-w-7xl mx-auto bg-gray-800/70 p-8 sm:p-10 rounded-2xl mt-8 shadow-inner border border-gray-700">
+                        <h4 class="text-2xl font-bold text-white mb-6 text-center font-orbitron">Describe Your Problem
+                        </h4>
+                        <div class="mb-6">
+                            <label for="govt-prompt-input" class="sr-only">Your Problem</label>
+                            <textarea id="govt-prompt-input" rows="6"
+                                class="w-full rounded-lg ai-input-field focus:ring-2 focus:ring-blue-400"
+                                placeholder="e.g., I am a farmer looking for financial assistance for new equipment."></textarea>
+                        </div>
+                        <div class="text-center">
+                            <div class="flex justify-center mt-6">
+                                <button id="generate-govt-response-button"
+                                    class="shimmer-button text-white font-semibold py-3 px-8 rounded-full border border-white hover:bg-white/10 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2">
+                                    <i class="material-icons notranslate text-white">gavel</i>
+                                    Find Government Options
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="govt-response-container" class="mt-8 ai-response-container notranslate hidden">
+                            <div id="govt-loading-indicator" class="flex justify-center items-center py-4 hidden">
+                                <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-amber-500"></div>
+                                <p class="ml-3 text-gray-300">AI is searching schemes...</p>
+                            </div>
+                            <div id="govt-response-text" class="leading-relaxed ai-markdown-output"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Solar Calculator Tab Content -->
+                <div id="solar-calculator-tab-content" class="ai-section-card p-8 sm:p-10 rounded-2xl mt-8 hidden">
+                    <h3 class="text-3xl font-bold text-white mb-6 text-center font-orbitron">Solar Energy Cost
+                        Calculator</h3>
+                    <p class="mt-5 text-lg text-gray-400 max-w-3xl mx-auto text-center">
+                        Calculate the estimated cost of solar panel installation for your area, including potential
+                        government subsidies, using AI.
+                    </p>
+                    <div
+                        class="max-w-7xl mx-auto bg-gray-800/70 p-8 sm:p-10 rounded-2xl mt-8 shadow-inner border border-gray-700">
+                        <h4 class="text-2xl font-bold text-white mb-6 text-center font-orbitron">Enter Your Details for
+                            Solar Cost Estimation</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="area-input" class="block text-gray-300 text-sm font-semibold mb-2">Area (in
+                                    sq. ft.):</label>
+                                <input type="number" id="area-input"
+                                    class="w-full ai-input-field focus:ring-2 focus:ring-blue-400 rounded-lg"
+                                    placeholder="e.g., 500" min="1">
+                            </div>
+                            <div>
+                                <label for="location-input"
+                                    class="block text-gray-300 text-sm font-semibold mb-2">Location (e.g.,
+                                    State/District):</label>
+                                <input type="text" id="location-input"
+                                    class="w-full ai-input-field focus:ring-2 focus:ring-blue-400 rounded-lg"
+                                    placeholder="e.g., Uttar Pradesh">
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <div class="flex justify-center mt-6">
+                                <button id="calculate-solar-cost-button"
+                                    class="shimmer-button text-white font-semibold py-3 px-8 rounded-full border border-white hover:bg-white/10 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2">
+                                    <i class="material-icons notranslate text-white">solar_power</i>
+                                    Calculate Cost
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="solar-cost-result-container" class="mt-8 ai-response-container notranslate hidden">
+                            <div id="solar-loading-indicator" class="flex justify-center items-center py-4 hidden">
+                                <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-amber-500"></div>
+                                <p class="ml-3 text-gray-300">AI is calculating solar cost...</p>
+                            </div>
+                            <div id="solar-cost-result-text" class="leading-relaxed ai-markdown-output"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Impact Dashboard Section -->
+        <section id="impact" class="py-20 sm:py-28 section-gradient-bg relative overflow-hidden">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 section-content scroll-fade-in">
+
+                <!-- Title -->
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl sm:text-5xl font-bold text-white font-orbitron">
+                        Our <span
+                            class="bg-gradient-to-r from-orange-500 to-yellow-400 bg-clip-text text-transparent">Impact</span>
+                        Dashboard
+                    </h2>
+                    <p class="mt-5 text-lg text-dark-text-secondary max-w-3xl mx-auto">
+                        Quantifying the digital transformation sweeping across the nation.
+                    </p>
+                </div>
+
+                <!-- Overall Stats -->
+                {% if data.impact_dashboard_overall_stats %}
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                    {% for stat in data.impact_dashboard_overall_stats %}
+                    <div
+                        class="glass-card bg-dark-bg-tertiary/70 backdrop-blur-md border border-dark-border rounded-2xl p-6 text-center transition-transform hover:scale-105 duration-300 shadow-lg">
+                        <i class="material-icons notranslate text-accent-saffron text-5xl mb-3">{{ stat.icon }}</i>
+                        <p class="text-4xl font-bold text-white mb-1">{{ stat.value }}</p>
+                        <p class="text-base text-dark-text-primary">{{ stat.label }}</p>
+                        <p class="text-sm text-dark-text-secondary italic">{{ stat.trend }}</p>
+                        <span class="text-xs font-semibold mt-3 inline-block px-3 py-1 rounded-full
+          {% if stat.status == 'ACTIVE' %} bg-green-600 text-white
+          {% elif stat.status == 'GROWING' %} bg-blue-700 text-white
+          {% elif stat.status == 'TARGET: 80%' %} bg-purple-800 text-purple-200
+          {% elif stat.status == 'GOAL: 100' %} bg-orange-600 text-white
+          {% endif %}">
+                            {{ stat.status }}
+                        </span>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="text-center text-dark-text-secondary mb-12">Overall impact stats not available.</p>
+                {% endif %}
+
+                <!-- Village Details -->
+                {% if data.impact_dashboard_village_details %}
+                <div
+                    class="glass-card bg-dark-bg-tertiary/80 backdrop-blur-lg border border-dark-border shadow-xl rounded-2xl p-8 mb-16">
+                    <h3 class="text-3xl font-bold text-white mb-6 font-orbitron">
+                        Village Spotlight: {{ data.impact_dashboard_village_details.name }}
+                    </h3>
+                    <div class="grid md:grid-cols-2 gap-8 items-start">
+
+                        <!-- Village Info -->
+                        <div>
+                            <p class="text-lg text-dark-text-primary mb-4">
+                                <span class="font-semibold text-accent-saffron">Population:</span>
+                                {{ data.impact_dashboard_village_details.population }}
+                            </p>
+                            <p class="text-lg text-dark-text-primary mb-6">
+                                <span class="font-semibold text-accent-saffron">Status:</span>
+                                <span class="font-bold
+              {% if data.impact_dashboard_village_details.status == 'Model Village' %} text-green-500
+              {% else %} text-blue-500 {% endif %}">
+                                    {{ data.impact_dashboard_village_details.status }}
+                                </span>
+                            </p>
+
+                            <h4 class="text-xl font-semibold text-white mb-4 font-orbitron">Progress Metrics:</h4>
+                            <ul class="space-y-3">
+                                {% for metric in data.impact_dashboard_village_details.progress_metrics %}
+                                <li class="flex items-center text-dark-text-primary">
+                                    <i class="material-icons notranslate text-accent-saffron mr-3">bar_chart</i>
+                                    <span class="font-medium mr-1">{{ metric.area }}:</span>
+                                    {{ metric.value }} <span class="text-sm text-dark-text-secondary">(Target: {{
+                                        metric.target
+                                        }})</span>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <!-- Achievement Highlight -->
+                        <div class="bg-orange-900/40 border-l-4 border-accent-saffron p-6 rounded-xl shadow-inner">
+                            <h4 class="text-xl font-bold text-orange-400 mb-2 font-orbitron">
+                                {{ data.impact_dashboard_village_details.achievement.title }}
+                            </h4>
+                            <p class="text-orange-200 mb-2">
+                                {{ data.impact_dashboard_village_details.achievement.description }}
+                            </p>
+                            <p class="text-sm text-orange-400">Certified: {{
+                                data.impact_dashboard_village_details.achievement.certified_date }}</p>
+                        </div>
+
+                    </div>
+                </div>
+                {% else %}
+                <div
+                    class="glass-card rounded-2xl p-8 mb-12 text-center text-dark-text-secondary border border-dark-border bg-dark-bg-tertiary/60 backdrop-blur">
+                    <p>Village details not available. Please ensure <code>impact_dashboard_village_details</code> is
+                        present in your data.</p>
+                </div>
+                {% endif %}
+
+                <!-- Village Impact Map -->
+                <div
+                    class="glass-card bg-dark-bg-tertiary/70 backdrop-blur-lg border border-dark-border rounded-2xl p-8 text-center shadow-lg">
+                    <h3 class="text-3xl font-bold text-white mb-6 font-orbitron">Village Impact Map</h3>
+                    <p class="text-dark-text-secondary mb-4">Explore our impact across different villages in India.</p>
+
+                    <!-- Larger canvas -->
+                    <canvas id="india-map-canvas" class="w-full h-[28rem] sm:h-[32rem] md:h-[36rem]"></canvas>
+
+                    <div class="flex flex-wrap justify-center space-x-4 mt-6">
+                        <button id="rotate-left-button"
+                            class="ai-action-button flex items-center gap-2 px-4 py-2 rounded-full text-sm shimmer-button">
+                            <i class="material-icons notranslate">rotate_left</i> Rotate Left
+                        </button>
+                        <button id="rotate-right-button"
+                            class="ai-action-button flex items-center gap-2 px-4 py-2 rounded-full text-sm shimmer-button">
+                            <i class="material-icons notranslate">rotate_right</i> Rotate Right
+                        </button>
+                        <button id="zoom-in-button"
+                            class="ai-action-button flex items-center gap-2 px-4 py-2 rounded-full text-sm shimmer-button">
+                            <i class="material-icons notranslate">zoom_in</i> Zoom In
+                        </button>
+                        <button id="zoom-out-button"
+                            class="ai-action-button flex items-center gap-2 px-4 py-2 rounded-full text-sm shimmer-button">
+                            <i class="material-icons notranslate">zoom_out</i> Zoom Out
+                        </button>
+                        <button id="reset-map-button"
+                            class="ai-action-button flex items-center gap-2 px-4 py-2 rounded-full text-sm shimmer-button">
+                            <i class="material-icons notranslate">refresh</i> Reset Map
+                        </button>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- Village Info Modal Structure (add this before the closing </body> tag) -->
+            <div id="village-info-modal" class="modal-overlay hidden">
+                <div class="modal-content glass-card p-8 rounded-2xl text-center">
+                    <button id="village-modal-close" class="modal-close-button">&times;</button>
+                    <h3 id="village-name" class="text-3xl font-bold text-white mb-4 font-orbitron"></h3>
+                    <p id="village-status" class="text-lg text-dark-text-secondary"></p>
+                </div>
+            </div>
+
+            <!-- Custom Global Modal for alerts (add this before the closing </body> tag) -->
+            <div id="custom-modal-overlay" class="modal-overlay hidden">
+                <div class="modal-content glass-card p-8 rounded-2xl text-center">
+                    <button id="custom-modal-close-button" class="modal-close-button">&times;</button>
+                    <h3 id="custom-modal-title" class="text-3xl font-bold text-white mb-4 font-orbitron"></h3>
+                    <p id="custom-modal-message" class="text-lg text-dark-text-secondary"></p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Get Involved Section (Combines Volunteer and Sponsorship) -->
+        <section id="get-involved" class="py-20 sm:py-28 section-gradient-bg relative overflow-hidden">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 section-content scroll-fade-in">
+
+                <!-- Title -->
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl sm:text-5xl font-bold text-white font-orbitron">
+                        Get <span class="gradient-text">Involved</span>
+                    </h2>
+                    <p class="mt-5 text-lg text-dark-text-secondary max-w-3xl mx-auto">
+                        Join us in building a digitally empowered India. Your support makes a difference!
+                    </p>
+                </div>
+
+                <!-- Contact Stats -->
+                {% if data.contact_section_stats %}
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+                    {% for stat in data.contact_section_stats %}
+                    <div
+                        class="glass-card p-6 rounded-2xl text-center flex flex-col items-center justify-center shadow-lg">
+                        <div class="w-20 h-20 rounded-full flex items-center justify-center mb-4" style="background: linear-gradient(to right,
+            {% if loop.index == 1 %}var(--accent-blue), #1D4ED8
+            {% elif loop.index == 2 %}var(--accent-emerald), #008f6a
+            {% elif loop.index == 3 %}var(--accent-saffron), #e66000
+            {% elif loop.index == 4 %}var(--accent-purple), #6a006a{% endif %});">
+                            <i class="material-icons notranslate text-white text-4xl">{{ stat.icon }}</i>
+                        </div>
+                        <p class="text-3xl font-bold text-white">{{ stat.value }}</p>
+                        <p class="text-dark-text-secondary text-sm">{{ stat.label }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <!-- Volunteer Section -->
+                <h3 class="text-3xl font-bold text-white text-center mb-10 font-orbitron">Join Our Volunteer Program
+                </h3>
+                <p class="text-center text-lg text-dark-text-secondary mb-10 max-w-3xl mx-auto">
+                    Be a part of the change! Your skills and time can make a significant difference in rural
+                    communities. Explore our volunteer roles and find the perfect fit for you.
+                </p>
+
+                {% if data.volunteer_roles %}
+                <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-8 mb-20">
+                    {% for role in data.volunteer_roles %}
+                    <div
+                        class="glass-card rounded-2xl p-6 shadow-md hover:shadow-xl transform hover:scale-105 transition duration-300">
+                        <div>
+                            <h3 class="text-2xl font-semibold text-white mb-3">{{ role.title }}</h3>
+                            <p class="text-dark-text-secondary mb-4">{{ role.description }}</p>
+                            <ul class="text-sm text-dark-text-primary space-y-1 mb-4">
+                                <li><span class="font-semibold text-accent-saffron">Commitment:</span> {{
+                                    role.commitment }}
+                                </li>
+                                <li><span class="font-semibold text-accent-saffron">Impact:</span> {{ role.impact }}
+                                </li>
+                            </ul>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                {% for skill in role.skills_needed %}
+                                <span
+                                    class="bg-gradient-to-r from-[var(--accent-emerald)] to-cyan-700 text-white text-xs font-semibold px-4 py-1.5 rounded-full shadow-hover:shadow-md transition transform hover:-translate-y-0.5">
+                                    {{ skill }}
+                                </span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="relative mt-4">
+                                <label for="volunteer-image-upload-{{ loop.index }}"
+                                    class="block text-dark-text-primary text-sm font-semibold mb-2">Upload Image
+                                    (Optional):</label>
+                                <input type="file" id="volunteer-image-upload-{{ loop.index }}" accept="image/*"
+                                    class="w-full text-dark-text-primary file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-gradient-to-r file:from-purple-600 file:to-purple-800 file:text-white hover:file:bg-purple-700 hover:file:cursor-pointer">
+                                <textarea id="volunteer-suggestions-{{ loop.index }}" rows="3"
+                                    class="w-full rounded-lg ai-input-field mt-3 hidden"
+                                    placeholder="AI suggestions for this role..."></textarea>
+                            </div>
+                        </div>
+
+                        <button
+                            class="apply-now-button w-full mt-4 px-5 py-3 rounded-xl bg-gradient-to-r from-blue-700 to-indigo-700 text-white font-medium text-sm shadow-lg hover:from-blue-800 hover:to-indigo-800 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 shimmer-button"
+                            data-role-title="{{ role.title }}">
+                            Apply Now
+                        </button>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="text-center text-dark-text-secondary mb-20">Volunteer roles not available.</p>
+                {% endif %}
+
+                <!-- Sponsorship Section -->
+                <h3 class="text-3xl font-bold text-white text-center mb-10 font-orbitron">Support Our Initiatives
+                </h3>
+                <p class="text-center text-lg text-dark-text-secondary mb-10 max-w-3xl mx-auto">
+                    Your contribution directly fuels our projects, bringing digital empowerment to those who need it
+                    most. Choose a sponsorship option that resonates with you.
+                </p>
+
+                {% if data.sponsorship_options_stats %}
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+                    {% for stat in data.sponsorship_options_stats %}
+                    <div
+                        class="glass-card rounded-2xl p-5 text-center flex flex-col items-center justify-center shadow">
+                        <i class="{{ stat.icon }}"
+                            style="color: {% if loop.index == 1 %}var(--accent-saffron){% elif loop.index == 2 %}var(--accent-emerald){% elif loop.index == 3 %}var(--accent-blue){% elif loop.index == 4 %}var(--accent-purple){% endif %}; font-size: 2.5rem;"></i>
+                        <p class="text-3xl font-bold text-white">{{ stat.value }}</p>
+                        <p class="text-dark-text-secondary text-sm">{{ stat.label }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="text-center text-dark-text-secondary">Sponsorship statistics not available.</p>
+                {% endif %}
+
+                {% if data.sponsorship_options %}
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {% for option in data.sponsorship_options %}
+                    <div
+                        class="glass-card rounded-2xl p-6 flex flex-col justify-between shadow-md hover:shadow-xl transform hover:scale-105 transition duration-300">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-3">{{ option.name }}</h3>
+                            <p class="text-accent-saffron text-4xl font-extrabold mb-4">{{ option.price }}</p>
+                            <p class="text-dark-text-secondary mb-4">{{ option.impact }}</p>
+                            <ul class="text-sm text-dark-text-primary space-y-2 mb-4">
+                                {% for item in option.includes %}
+                                <li class="flex items-start">
+                                    <i class="material-icons notranslate text-green-500 text-lg mr-2">check_circle</i>
+                                    <span>{{ item }}</span>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <!-- Progress bar -->
+                        <div class="w-full mb-3">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-sm font-medium text-dark-text-primary">Progress</span>
+                                <span class="text-sm font-semibold text-white">{{ option.progress.current }} / {{
+                                    option.progress.total_needed }}</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-4 relative shadow-inner">
+                                <div class="h-4 bg-gradient-to-r from-emerald-600 to-lime-600 rounded-full transition-all duration-500 ease-in-out"
+                                    style="width: {{ option.progress.percentage }}%">
+                                </div>
+                                <span class="absolute right-2 top-0 text-xs font-medium text-white leading-4"
+                                    style="transform: translateY(4px);">
+                                </span>
+                            </div>
+                        </div>
+
+                        <button
+                            class="donate-now-button w-full mt-4 px-5 py-3 rounded-xl bg-gradient-to-r from-[var(--accent-saffron)] to-[var(--accent-red)] text-white font-semibold text-sm shadow-lg hover:from-pink-700 hover:to-red-700 hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1 shimmer-button"
+                            data-option-name="{{ option.name }}">
+                            Donate Now
+                        </button>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="text-center text-dark-text-secondary">Sponsorship options not available.</p>
+                {% endif %}
+            </div>
+        </section>
+
+        <!-- Government Schemes Section -->
+        <section id="schemes" class="py-20 sm:py-28 section-gradient-bg relative overflow-hidden">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 section-content scroll-fade-in">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl sm:text-5xl font-bold text-white font-orbitron">Government Digital <span
+                            class="gradient-text">Initiatives & Schemes</span></h2>
+                    <p class="mt-5 text-lg text-dark-text-secondary max-w-3xl mx-auto">
+                        Discover various government schemes aimed at digital empowerment and rural development. We help
+                        bridge the gap between these initiatives and the communities.
+                    </p>
+                </div>
+
+                <div class="max-w-3xl mx-auto glass-card p-8 sm:p-10 rounded-2xl mb-12">
+                    <h3 class="text-2xl font-bold text-white mb-6 text-center font-orbitron">Find Relevant Schemes
+                    </h3>
+                    <p class="text-dark-text-primary mb-6 text-center">Select your need and we'll suggest the best
+                        government
+                        schemes for you.</p>
+                    <div class="mb-6">
+                        <label for="scheme-category-select" class="sr-only">What do you need support for?</label>
+                        <select id="scheme-category-select"
+                            class="w-full bg-gray-700 border border-dark-border rounded-lg py-3.5 px-5 text-dark-text-primary placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-saffron transition-all duration-200">
+                            <option value="" class="bg-gray-800 text-dark-text-primary">Select an option</option>
+                            <!-- Options will be dynamically loaded here by JavaScript -->
+                        </select>
+                    </div>
+                </div>
+
+                <div id="schemes-content-container">
+                    <!-- Scheme cards will be dynamically loaded here by JavaScript -->
+                    <div class="flex flex-col justify-center items-center py-10 text-dark-text-secondary">
+                        <i class="material-icons notranslate text-6xl mb-4 text-accent-emerald">category</i>
+                        <p class="text-xl font-semibold mb-2">Please select a category to view relevant schemes.</p>
+                        <p class="text-lg text-center max-w-md">Use the dropdown above to filter government initiatives
+                            by category.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem Reporting Section -->
+        <section id="problem-reporting" class="py-20 sm:py-28 section-gradient-bg relative overflow-hidden">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 section-content scroll-fade-in">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl sm:text-5xl font-bold text-white font-orbitron">Report a <span
+                            class="gradient-text">Problem</span></h2>
+                    <p class="mt-5 text-lg text-dark-text-secondary max-w-3xl mx-auto">
+                        Facing an issue in your village or personally? Let us know, and we'll connect you with the right
+                        solutions.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+                    <!-- Left Column: Helper Text -->
+                    <div class="glass-card p-8 rounded-2xl flex flex-col justify-center h-full">
+                        <h3 class="text-2xl font-bold text-white mb-4 font-orbitron">How This Form Helps You</h3>
+                        <p class="text-dark-text-primary leading-relaxed mb-4">
+                            In many parts of India, especially in rural and semi-urban areas, people often face
+                            challenges that go unreported simply because they don’t know how or where to raise their
+                            concerns. This form bridges that gap. Whether you're dealing with irregular electricity,
+                            damaged roads, lack of sanitation, water shortages, poor internet connectivity, or
+                            unresponsive local officials — this is your opportunity to speak up and be heard.
+                        </p>
+                        <p class="text-dark-text-primary leading-relaxed mb-4">
+                            Once you submit the form, your report is analyzed and routed to the relevant authorities,
+                            development organizations, or government helplines that can take action. If your issue
+                            affects your entire village, you can mark it as such — helping us escalate it for faster
+                            resolution. We're building a smarter, more connected Bharat where every citizen, regardless
+                            of location, has access to the tools of digital empowerment.
+                        </p>
+                        <p class="text-dark-text-primary leading-relaxed">
+                            By filling out this form, you're not just reporting a problem — you're helping create a
+                            database of real-world issues that can influence policy-making, improve service delivery,
+                            and hold systems accountable. You’re making your voice count. Together, we can bring
+                            visibility to local problems and help build a nation where progress reaches every corner.
+                        </p>
+                    </div>
+
+
+                    <!-- Right Column: Problem Reporting Form -->
+                    <div class="glass-card w-full p-10 sm:p-12 rounded-2xl shadow-2xl">
+                        <h3 class="text-3xl font-bold text-white mb-8 text-center font-orbitron">Submit a Problem Report
+                        </h3>
+
+                        <form id="problem-report-form" class="space-y-7">
+
+                            <!-- Name -->
+                            <div>
+                                <label for="reporter-name"
+                                    class="block text-sm font-semibold text-dark-text-secondary mb-1">
+                                    Your Full Name
+                                </label>
+                                <input type="text" name="reporterName" id="reporter-name" required
+                                    class="problem-form-input w-full bg-dark-bg-tertiary border border-dark-border rounded-lg focus:border-accent-blue focus:ring-2 focus:ring-accent-blue px-4 py-3 text-base"
+                                    placeholder="Enter your full name">
+                            </div>
+
+                            <!-- Problem Description -->
+                            <div>
+                                <label for="problem-description"
+                                    class="block text-sm font-semibold text-dark-text-secondary mb-1">
+                                    Describe the Problem
+                                </label>
+                                <textarea id="problem-description" name="problemDescription" rows="5" required
+                                    class="problem-form-input w-full bg-dark-bg-tertiary border border-dark-border rounded-lg focus:border-accent-blue focus:ring-2 focus:ring-accent-blue px-4 py-3 text-base"
+                                    placeholder="Explain the issue clearly..."></textarea>
+                            </div>
+
+                            <!-- Optional Image Upload -->
+                            <div>
+                                <label for="problem-image-upload"
+                                    class="block text-sm font-semibold text-dark-text-secondary mb-1">
+                                    Upload Image (Optional)
+                                </label>
+                                <input type="file" id="problem-image-upload" accept="image/*"
+                                    class="block w-full text-sm text-dark-text-primary file:mr-4 file:py-2 file:px-5 file:rounded-lg file:border-0 file:font-medium file:bg-gradient-to-r file:from-blue-600 file:to-blue-800 file:text-white hover:file:brightness-110 transition" />
+                                <div id="problem-image-loading" class="flex items-center justify-center py-2 hidden">
+                                    <div class="animate-spin rounded-full h-5 w-5 border-b-2 border-accent-saffron">
+                                    </div>
+                                    <p class="ml-2 text-sm text-dark-text-secondary">Analyzing image...</p>
+                                </div>
+                            </div>
+
+                            <!-- Village Checkbox -->
+                            <div class="flex items-center space-x-3">
+                                <input type="checkbox" id="for-village" name="forVillage"
+                                    class="form-checkbox h-5 w-5 text-accent-emerald border-gray-600 rounded focus:ring-accent-emerald bg-dark-bg-tertiary">
+                                <label for="for-village" class="text-dark-text-primary text-sm">
+                                    This problem affects the whole village
+                                </label>
+                            </div>
+
+                            <!-- Location Input -->
+                            <div class="relative w-full">
+                                <label for="village-location"
+                                    class="block text-sm font-semibold text-dark-text-secondary mb-1">
+                                    Village Location
+                                </label>
+
+                                <!-- Input with right padding to make space for the icon button -->
+                                <input type="text" id="village-location" name="villageLocation" required
+                                    class="problem-form-input w-full bg-dark-bg-tertiary border border-dark-border rounded-lg focus:border-accent-blue focus:ring-2 focus:ring-accent-blue px-4 py-3 pr-14 text-base"
+                                    placeholder="Enter village name or coordinates">
+
+                                <!-- Icon button absolutely positioned inside the input container -->
+                                <button type="button" id="detect-location-button"
+                                    class="absolute right-3 top-[2.2rem] text-accent-emerald hover:text-white transition-colors p-1 rounded-md">
+                                    <i class="material-icons notranslate text-xl leading-none">my_location</i>
+                                </button>
+                            </div>
+
+
+                            <!-- Submit -->
+                            <div class="text-center pt-2">
+                                <button type="submit"
+                                    class="btn-primary font-semibold py-3 px-10 rounded-full shadow-lg hover:scale-105 transform transition-all shimmer-button text-base">
+                                    Submit Report
+                                </button>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact"
+            class="py-20 sm:py-28 section-gradient-bg relative overflow-hidden text-dark-text-primary">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 section-content scroll-fade-in">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl sm:text-5xl font-bold font-orbitron">Connect with <span
+                            class="gradient-text">Digital Bharat</span></h2>
+                    <p class="mt-4 text-lg text-dark-text-secondary max-w-2xl mx-auto">
+                        Have questions, ideas, or want to collaborate? Reach out to us below.
+                    </p>
+                </div>
+
+                {% if data.contact_information %}
+                <div class="grid md:grid-cols-2 gap-10 lg:gap-16">
+                    <!-- Contact Details Card -->
+                    <div class="glass-card p-8 rounded-3xl space-y-6 relative">
+                        <h3 class="text-2xl font-semibold text-accent-saffron mb-4 font-orbitron">Our Contact Details
+                        </h3>
+                        <ul class="space-y-5 text-dark-text-primary">
+                            <li class="flex gap-4">
+                                <span class="text-accent-saffron"><i class="material-icons notranslate">mail</i></span>
+                                <div>
+                                    <p><span class="font-semibold text-white">Email:</span> <a
+                                            href="mailto:{{ data.contact_information.email.address }}"
+                                            class="hover:underline text-white">{{
+                                            data.contact_information.email.address }}</a></p>
+                                    <p class="text-sm text-dark-text-secondary">{{
+                                        data.contact_information.email.inquiry_type }}
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <span class="text-accent-saffron"><i class="material-icons notranslate">phone</i></span>
+                                <div>
+                                    <p><span class="font-semibold text-white">Phone:</span> <a
+                                            href="tel:{{ data.contact_information.phone.number }}"
+                                            class="hover:underline text-white">{{
+                                            data.contact_information.phone.number }}</a></p>
+                                    <p class="text-sm text-dark-text-secondary">{{
+                                        data.contact_information.phone.inquiry_type }}
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <span class="text-accent-saffron"><i
+                                        class="material-icons notranslate">location_on</i></span>
+                                <div>
+                                    <p class="font-semibold text-white">Address:</p>
+                                    <p>{{ data.contact_information.address.organization }}</p>
+                                    <p>{{ data.contact_information.address.location }}</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <span class="text-accent-saffron"><i
+                                        class="material-icons notranslate">schedule</i></span>
+                                <div>
+                                    <p class="font-semibold text-white">Support Hours:</p>
+                                    <p>{{ data.contact_information.support_hours.time }}</p>
+                                    <p class="text-sm text-dark-text-secondary">{{
+                                        data.contact_information.support_hours.days }}
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+
+                        {% if data.contact_information.connect_with_us %}
+                        <div class="pt-6 border-t border-dark-border">
+                            <h4 class="text-lg font-semibold mb-4 text-white">Connect With Us:</h4>
+                            <div class="flex flex-wrap gap-3">
+                                {% for social in data.contact_information.connect_with_us %}
+                                <a href="{{ social.link }}" target="_blank"
+                                    class="bg-accent-saffron hover:bg-orange-700 transition px-4 py-2 rounded-full text-sm font-medium text-white flex items-center gap-2">
+                                    <i class="material-icons notranslate text-base">link</i> {{ social.platform }}
+                                </a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Contact Form Card -->
+                    <div class="glass-card p-8 rounded-3xl">
+                        <h3 class="text-2xl font-semibold text-accent-saffron mb-6 text-center font-orbitron">Send Us
+                            a Message
+                        </h3>
+                        <form action="#" method="POST" id="contact-form" class="space-y-6">
+
+                            <div class="relative">
+                                <input type="text" name="name" id="name" required
+                                    class="peer w-full bg-transparent border-b border-gray-600 text-white placeholder-transparent focus:outline-none focus:border-accent-blue py-3 px-0 contact-input"
+                                    placeholder="Full Name">
+                                <label for="name"
+                                    class="absolute left-0 top-3 text-dark-text-secondary text-sm peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-dark-text-secondary peer-focus:top-0 peer-focus:text-sm peer-focus:text-accent-blue peer-valid:top-0 peer-valid:text-sm">Full
+                                    Name</label>
+                            </div>
+
+                            <div class="relative">
+                                <input type="email" name="email" id="email" required
+                                    class="peer w-full bg-transparent border-b border-gray-600 text-white placeholder-transparent focus:outline-none focus:border-accent-blue py-3 px-0 contact-input">
+                                <label for="email"
+                                    class="absolute left-0 top-3 text-dark-text-secondary text-sm peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-dark-text-secondary peer-focus:top-0 peer-focus:text-sm peer-focus:text-accent-blue peer-valid:top-0 peer-valid:text-sm">Email
+                                    Address</label>
+                            </div>
+
+                            <div class="relative">
+                                <select id="category" name="category"
+                                    class="w-full bg-transparent border-b border-gray-600 text-white focus:outline-none focus:border-accent-blue py-3 px-0 contact-input">
+                                    {% for category in data.contact_form_categories %}
+                                    <option value="{{ category.value }}" class="text-dark-text-primary bg-gray-800">{{
+                                        category.label }}
+                                    </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <div class="relative">
+                                <textarea name="message" id="message" rows="5" required
+                                    class="peer w-full bg-transparent border-b border-gray-600 text-white placeholder-transparent focus:outline-none focus:border-accent-blue py-3 px-0 contact-input"
+                                    placeholder="Your Message"></textarea>
+                                <label for="message"
+                                    class="absolute left-0 top-3 text-dark-text-secondary text-sm peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-dark-text-secondary peer-focus:top-0 peer-focus:text-sm peer-focus:text-accent-blue peer-valid:top-0 peer-valid:text-sm">Your
+                                    Message</label>
+                            </div>
+
+                            <div class="pt-2">
+                                <button type="submit"
+                                    class="w-full btn-primary font-semibold py-3.5 px-8 rounded-full shadow-lg hover:scale-105 transition transform duration-300 shimmer-button">
+                                    Send Message
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                {% else %}
+                <div class="glass-card rounded-2xl p-8 mb-12 text-center text-dark-text-secondary">
+                    <p>Contact information not available. Please ensure <code>'contact_information'</code> is present
+                        in
+                        your data.</p>
+                </div>
+                {% endif %}
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark-bg-secondary py-12 text-dark-text-primary">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            {% if data.footer_links %}
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 text-center md:text-left mb-10">
+                <!-- Logo and Description -->
+                <div class="col-span-full lg:col-span-1 flex flex-col items-center md:items-start">
+                    <a href="#" class="flex items-center space-x-2 text-3xl font-bold mb-4">
+                        <span class="gradient-text font-orbitron">Digital Bharat</span>
+                    </a>
+                    <p class="text-dark-text-secondary text-sm max-w-xs">
+                        Empowering India through digital transformation and sustainable development.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-xl font-semibold text-white mb-4 font-orbitron">Quick Links</h4>
+                    <ul class="space-y-3">
+                        {% for link in data.footer_links.quick_links %}
+                        <li><a href="{{ link.href }}"
+                                class="text-dark-text-primary hover:text-white transition-colors">{{
+                                link.label }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <!-- Focus Areas in Footer -->
+                <div>
+                    <h4 class="text-xl font-semibold text-white mb-4 font-orbitron">Our Focus Areas</h4>
+                    <ul class="space-y-3">
+                        {% for area in data.footer_links.focus_areas %}
+                        <li class="flex items-center justify-center md:justify-start">
+                            <i class="material-icons notranslate w-5 h-5 text-accent-saffron mr-3">{{ area.icon }}</i>
+                            <span class="text-dark-text-primary">{{ area.label }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <!-- Contact Info in Footer -->
+                {% if data.contact_information %}
+                <div>
+                    <h4 class="text-xl font-semibold text-white mb-4 font-orbitron">Contact Us</h4>
+                    <ul class="space-y-3 text-dark-text-primary">
+                        <li class="flex items-center justify-center md:justify-start">
+                            <i class="material-icons notranslate w-5 h-5 text-accent-saffron mr-3">mail</i>
+                            <a href="mailto:{{ data.contact_information.email.address }}" class="hover:text-white">{{
+                                data.contact_information.email.address }}</a>
+                        </li>
+                        <li class="flex items-center justify-center md:justify-start">
+                            <i class="material-icons notranslate w-5 h-5 text-accent-saffron mr-3">phone</i>
+                            <a href="tel:{{ data.contact_information.phone.number }}" class="hover:text-white">{{
+                                data.contact_information.phone.number }}</a>
+                        </li>
+                        <li class="flex items-start justify-center md:justify-start">
+                            <i class="material-icons notranslate w-5 h-5 text-accent-saffron mr-3 mt-1">location_on</i>
+                            <span>{{ data.contact_information.address.location }}</span>
+                        </li>
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+
+            <div
+                class="border-t border-dark-border pt-8 mt-8 flex flex-col md:flex-row justify-between items-center text-center md:text-left text-dark-text-secondary space-y-4 md:space-y-0">
+                <p>{{ data.copyright }}</p>
+                {% if data.policy_links %}
+                <div class="flex space-x-6">
+                    {% for link in data.policy_links %}
+                    <a href="{{ link.href }}" class="hover:text-white transition-colors">{{ link.label }}</a>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            {% else %}
+            <div
+                class="flex flex-col md:flex-row justify-between items-center text-dark-text-secondary space-y-4 md:space-y-0">
+                <p>&copy; 2024 Digital Bharat Mission. All Rights Reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+            <p class="mt-6 text-sm text-gray-600 text-center">Designed with Passion for a Digitally Empowered Nation.
+            </p>
+            {% endif %}
+        </div>
+    </footer>
+
+
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top-button" aria-label="Scroll to top" class="shimmer-button">
+        <i class="material-icons notranslate">arrow_upward</i>
+    </button>
+
+    <!-- Chatbot Button -->
+    <button id="chatbot-button" class="shimmer-button">
+        <i class="material-icons notranslate">chat_bubble</i>
+    </button>
+
+    <!-- Chatbot Modal Overlay -->
+    <!-- Chatbot Modal Overlay (covers entire screen but doesn't center content) -->
+    <div id="chatbot-modal-overlay" class="fixed inset-0 z-50 bg-transparent pointer-events-none    ">
+
+        <!-- Floating Chatbot Modal Container -->
+        <div
+            class="absolute bottom-6 right-6 w-full max-w-md rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-[0_8px_30px_rgba(0,0,0,0.4)] p-5 pointer-events-auto glass-card transition-all duration-300 z-50">
+
+            <!-- Close Button -->
+            <button id="chatbot-modal-close-button"
+                class="absolute top-4 right-4 text-white text-2xl font-bold hover:text-accent-saffron transition-all z-10">
+                &times;
+            </button>
+
+            <!-- Header -->
+            <h3 class="text-2xl font-orbitron font-bold text-white tracking-wide mb-4">
+                Digital Bharat Chatbot
+            </h3>
+
+            <!-- Messages Area -->
+            <div id="chatbot-messages"
+                class="flex flex-col gap-2 overflow-y-auto max-h-60 pr-2 text-sm text-white scrollbar-thin scrollbar-thumb-accent-saffron/70 scrollbar-track-transparent">
+                <!-- JS will append messages here -->
+            </div>
+
+            <!-- Typing Indicator -->
+            <div id="chatbot-loading-indicator"
+                class="flex items-center justify-center gap-2 py-2 hidden text-white text-sm">
+                <div class="animate-spin rounded-full h-4 w-4 border-2 border-accent-saffron border-t-transparent">
+                </div>
+                <p>Typing...</p>
+            </div>
+
+            <!-- Input Section -->
+            <div id="chatbot-input-container" class="flex items-center gap-2 mt-3">
+                <input type="text" id="chatbot-input" placeholder="Type your message..."
+                    class="flex-grow px-4 py-2 rounded-md bg-white/10 text-white placeholder-white/60 text-sm focus:outline-none focus:ring-2 focus:ring-accent-saffron transition">
+
+                <button id="chatbot-send-button"
+                    class="shimmer-button flex items-center justify-center px-3 py-2 rounded-md bg-accent-saffron hover:bg-accent-red text-white transition-all">
+                    <i class="material-icons notranslate text-base">send</i>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Google Translate Element -->
+    <div id="google_translate_element"></div>
+
+    <!-- Custom JavaScript -->
+    <script src="/static/script.js"></script>
+
+    <!-- Google Translate API Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,hi,bn,ta,te,mr,gu,kn,ml,pa,ur',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+
+        function autoTranslate(lang) {
+            const interval = setInterval(() => {
+                const select = document.querySelector("select.goog-te-combo");
+                if (select) {
+                    select.value = lang;
+                    select.dispatchEvent(new Event('change'));
+                    clearInterval(interval);
+                }
+            }, 300);
+        }
+    </script>
+    <script defer type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+        </script>
+
+
+
+    <SCRIPT>document.addEventListener("DOMContentLoaded", () => {
+            const buttons = document.querySelectorAll(".tab-button");
+            const clickBox = document.getElementById("tab-click-info");
+            const clickText = document.getElementById("click-count-text");
+            const activeStatusText = document.getElementById("active-status-text");
+            const activeUsersEl = document.getElementById("active-users-24h");
+            const totalUsersEl = document.getElementById("total-users-all-time");
+
+            function refreshUserStats() {
+                fetch('/user-stats')
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log('User stats received:', data); // Debug log
+                        activeUsersEl.textContent = data.active_users_last_24h;
+                        totalUsersEl.textContent = data.total_unique_users;
+                    })
+                    .catch(err => {
+                        console.error('User stats fetch failed:', err);
+                        // Show fallback values on error
+                        activeUsersEl.textContent = "Error";
+                        totalUsersEl.textContent = "Error";
+                    });
+            }
+
+            // Initial load
+            refreshUserStats();
+            // Refresh every minute
+            setInterval(refreshUserStats, 60000);
+
+            // Handle tab clicks
+            buttons.forEach(button => {
+                button.addEventListener("click", () => {
+                    const tabId = button.dataset.tab;
+
+                    fetch("/tab-click", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ tab_id: tabId })
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            const count = data.count || 0;
+
+                            // Show counter box
+                            clickBox.classList.remove("hidden");
+                            clickText.textContent = `Clicked: ${count} times`;
+                            activeStatusText.textContent = `Currently Active`;
+
+                            // Highlight active tab
+                            buttons.forEach(btn => btn.classList.remove("ring-2", "ring-accent-emerald"));
+                            button.classList.add("ring-2", "ring-accent-emerald");
+
+                            // Update badge
+                            let badge = button.querySelector(".click-badge");
+                            if (!badge) {
+                                badge = document.createElement("span");
+                                badge.className = "ml-2 text-xs bg-gray-700 text-white px-2 py-0.5 rounded-full click-badge";
+                                button.appendChild(badge);
+                            }
+                            badge.textContent = `${count}`;
+
+                            // Refresh user stats after click
+                            refreshUserStats();
+                        })
+                        .catch(err => {
+                            console.error('Tab click failed:', err);
+                        });
+                });
+            });
+        });</SCRIPT>
+
+
+
+</body>
+
+</html>

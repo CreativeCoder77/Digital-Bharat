@@ -1,0 +1,707 @@
+{
+  "hero_section_stats": [
+    {
+      "icon": "menu_book",
+      "number": "25+",
+      "label": "Education Kits"
+    },
+    {
+      "icon": "local_hospital",
+      "number": "5K+",
+      "label": "Patients Served"
+    },
+    {
+      "icon": "solar_power",
+      "number": "150+",
+      "label": "Solar Homes"
+    },
+    {
+      "icon": "agriculture",
+      "number": "200+",
+      "label": "Farmers Supported"
+    }
+  ],
+  "about_mission_challenges": [
+    {
+      "metric": "Villages lack stable internet",
+      "value": "60%",
+      "icon": "wifi"
+    },
+    {
+      "metric": "People use phones in local languages",
+      "value": "80%",
+      "icon": "language"
+    },
+    {
+      "metric": "Doctor to rural people ratio",
+      "value": "1:1,456",
+      "icon": "medical_services"
+    }
+  ],
+"our_solution_features": [
+  {
+    "title": "AI-Powered Solutions",
+    "description": "Smart chatbots, disease detection, and personalized learning experiences.",
+    "icon": "auto_awesome",
+    "color_from": "indigo-500",
+    "color_to": "purple-600"
+  },
+  {
+    "title": "Solar Energy Integration",
+    "description": "Sustainable power for digital infrastructure and smart classrooms.",
+    "icon": "solar_power",
+    "color_from": "yellow-500",
+    "color_to": "amber-600"
+  },
+  {
+    "title": "IoT & Mobile First",
+    "description": "Connected devices and mobile-optimized platforms for rural accessibility.",
+    "icon": "devices_other",
+    "color_from": "green-500",
+    "color_to": "teal-600"
+  }
+],
+  "our_solution_key_features": [
+    "Delivered via CSCs (Common Service Centers)",
+    "Designed for vernacular languages",
+    "Works offline and in low-connectivity areas",
+    "Inclusive design for all literacy levels",
+    "Sustainable through solar power integration"
+  ],
+  "impact_dashboard_overall_stats": [
+    {
+      "label": "Villages Adopted",
+      "value": "12",
+      "trend": "+2 this month",
+      "status": "ACTIVE",
+      "icon": "location_on"
+    },
+    {
+      "label": "Lives Impacted",
+      "value": "18,500",
+      "trend": "+1,200 this quarter",
+      "status": "GROWING",
+      "icon": "groups"
+    },
+    {
+      "label": "Avg. Digital Literacy",
+      "value": "74%",
+      "trend": "+8% from last year",
+      "status": "TARGET: 80%",
+      "icon": "trending_up"
+    },
+    {
+      "label": "Model Villages",
+      "value": "3",
+      "trend": "+1 certified",
+      "status": "GOAL: 100",
+      "icon": "emoji_events"
+    }
+  ],
+  "impact_dashboard_village_details": {
+    "name": "Rampur, Uttar Pradesh",
+    "population": "2,500 people",
+    "status": "Model Village",
+    "progress_metrics": [
+      {
+        "area": "Digital Literacy",
+        "value": "85%",
+        "target": "80%",
+        "icon": "computer"
+      },
+      {
+        "area": "Solar Power Usage",
+        "value": "72%",
+        "target": "75%",
+        "icon": "wb_sunny"
+      },
+      {
+        "area": "Health AI Usage",
+        "value": "90%",
+        "target": "98%",
+        "icon": "favorite"
+      },
+      {
+        "area": "Farmers Supported",
+        "value": "45",
+        "target": "Out of 60",
+        "icon": "agriculture"
+      }
+    ],
+    "achievement": {
+      "title": "Model Village Achievement",
+      "description": "This village has achieved 80%+ digital adoption across all focus areas and serves as an inspiration for other communities.",
+      "certified_date": "March 15, 2024"
+    }
+  },
+  "village_impact_map_markers": [
+    {
+      "name": "Rajouri",
+      "type": "Model Village",
+      "status_color": "green"
+    },
+    {
+      "name": "Rampur",
+      "type": "Model Village",
+      "status_color": "green"
+    },
+    {
+      "name": "Sundarbans",
+      "type": "Early Stage",
+      "status_color": "blue"
+    },
+    {
+      "name": "Krishnagiri",
+      "type": "Progressing",
+      "status_color": "yellow"
+    }
+  ],
+  "volunteer_roles": [
+    {
+      "title": "Digital Trainer",
+      "description": "Teach digital literacy and essential computer skills to rural communities, fostering self-sufficiency.",
+      "commitment": "4-6 hours/week",
+      "impact": "Train 20-30 people per month",
+      "skills_needed": [
+        "Teaching",
+        "Computer Skills",
+        "Communication"
+      ]
+    },
+    {
+      "title": "Solar Technician",
+      "description": "Install and maintain sustainable solar panels and energy systems, bringing clean power to homes.",
+      "commitment": "2-3 days/month",
+      "impact": "Power 5-10 homes per visit",
+      "skills_needed": [
+        "Electrical Work",
+        "Technical Skills",
+        "Problem Solving"
+      ]
+    },
+    {
+      "title": "Chatbot Content Creator",
+      "description": "Develop engaging healthcare content and FAQs for our AI chatbot, improving access to information.",
+      "commitment": "3-4 hours/week",
+      "impact": "Help 100+ patients monthly",
+      "skills_needed": [
+        "Medical Knowledge",
+        "Writing",
+        "Local Languages"
+      ]
+    },
+    {
+      "title": "Language Translator",
+      "description": "Translate vital educational and health content into local languages, making knowledge accessible.",
+      "commitment": "2-3 hours/week",
+      "impact": "Make content accessible to 1000+ people",
+      "skills_needed": [
+        "Multilingual",
+        "Translation",
+        "Cultural Knowledge"
+      ]
+    }
+  ],
+ "sponsorship_options": [
+  {
+    "name": "Adopt a Student",
+    "price": "₹2,500",
+    "impact": "Provides a student with digital access and mentorship for one year",
+    "duration": "12 months",
+    "beneficiaries": "1 student",
+    "includes": [
+      "Educational tablet with preloaded learning content",
+      "Digital literacy training sessions",
+      "Monthly progress and performance reports",
+      "Access to a dedicated virtual mentor"
+    ],
+    "progress": {
+      "current": 23,
+      "total_needed": 35,
+      "percentage": 66
+    }
+  },
+  {
+    "name": "Sponsor a Health Camp",
+    "price": "₹15,000",
+    "impact": "Delivers essential health services to over 200 villagers",
+    "duration": "1-day health event",
+    "beneficiaries": "200+ villagers",
+    "includes": [
+      "AI-powered health screening chatbot",
+      "Basic health checkup kits and devices",
+      "Qualified healthcare volunteers",
+      "Free telemedicine consultations after the event"
+    ],
+    "progress": {
+      "current": 18,
+      "total_needed": 30,
+      "percentage": 60
+    }
+  },
+  {
+    "name": "Fund a Solar Panel",
+    "price": "₹25,000",
+    "impact": "Ensures clean, reliable electricity for a rural household",
+    "duration": "20+ years",
+    "beneficiaries": "1 family (approx. 5 members)",
+    "includes": [
+      "Complete rooftop solar panel system",
+      "Battery storage for night-time usage",
+      "Smart IoT energy monitoring dashboard",
+      "Free maintenance support for 5 years"
+    ],
+    "progress": {
+      "current": 12,
+      "total_needed": 20,
+      "percentage": 60
+    }
+  },
+  {
+    "name": "Gift an AI Farming Kit",
+    "price": "₹5,000",
+    "impact": "Empowers 10 farmers with smart agriculture tools",
+    "duration": "Lifetime access",
+    "beneficiaries": "10 farmers",
+    "includes": [
+      "AI plant disease diagnosis mobile app",
+      "Hands-on training for app usage",
+      "Real-time weather alerts and crop tips",
+      "Expert connections via agri helpline"
+    ],
+    "progress": {
+      "current": 30,
+      "total_needed": 40,
+      "percentage": 75
+    }
+  }
+],
+  "problems_faced": [
+    {
+      "icons": "menu_book",
+      "title": "Lack of Access to Quality Education",
+      "description": "Many rural students do not have access to smart classrooms, digital content, or trained educators, which hinders learning outcomes.",
+      "color_from": "indigo-500",
+      "color_to": "purple-600"
+    },
+    {
+      "icons": "medical_services",
+      "title": "Limited Healthcare Access",
+      "description": "Villages often face a shortage of healthcare professionals and diagnostic facilities, delaying essential medical care.",
+      "color_from": "red-500",
+      "color_to": "pink-600"
+    },
+    {
+      "icons": "power_off",
+      "title": "Unreliable Electricity Supply",
+      "description": "Inconsistent power availability disrupts digital learning, healthcare operations, and mobile device usage in rural areas.",
+      "color_from": "yellow-500",
+      "color_to": "orange-600"
+    },
+    {
+      "icons": "agriculture",
+      "title": "Low Agricultural Productivity",
+      "description": "Farmers lack access to modern tools, timely weather alerts, and digital market linkages, resulting in reduced yields and profits.",
+      "color_from": "green-500",
+      "color_to": "teal-600"
+    },
+    {
+      "icons": "language",
+      "title": "Language Barriers in Digital Access",
+      "description": "Most online platforms and content are not available in local languages, making digital services inaccessible for many villagers.",
+      "color_from": "blue-500",
+      "color_to": "cyan-600"
+    },
+    {
+      "icons": "devices",
+      "title": "Low Digital Literacy",
+      "description": "A significant portion of the rural population lacks basic digital skills, limiting their ability to use technology and benefit from schemes.",
+      "color_from": "gray-500",
+      "color_to": "gray-700"
+    }
+  ],
+
+  "government_subsidy_schemes": [
+    {
+      "name": "DIGITAL INDIA - SMART CLASSROOM INITIATIVE",
+      "ministry": "Ministry of Human Resource Development",
+      "status": "Active",
+      "deadline": "March 2025",
+      "description": "Initiative to transform classrooms with digital technology and smart boards",
+      "category": "smart-classroom-setup",
+      "eligibility": [
+        "Government and aided schools",
+        "Schools in rural and remote areas",
+        "Minimum 100 students enrollment",
+        "Basic infrastructure available"
+      ],
+      "benefits": [
+        "Smart boards installation",
+        "Digital content library",
+        "Teacher training program",
+        "Internet connectivity support"
+      ],
+      "process": [
+        "School applies through education department",
+        "Infrastructure assessment",
+        "Approval from district collector",
+        "Installation and training"
+      ],
+      "documents": [
+        "School Registration",
+        "NOC from Education Dept",
+        "Infrastructure Report"
+      ]
+    },
+    {
+      "name": "PM-GRAMIN DIGITAL SAKSHARTA ABHIYAN (PMGDISHA)",
+      "ministry": "Ministry of Electronics and Information Technology",
+      "status": "Active",
+      "deadline": "Ongoing",
+      "description": "Digital literacy programme for rural India to make digitally literate citizens",
+      "category": "digital-skills-training",
+      "eligibility": [
+        "One person per family",
+        "Age between 14-60 years",
+        "Should be from rural area",
+        "Should not be a government employee"
+      ],
+      "benefits": [
+        "Free digital literacy training",
+        "40 hours of training program",
+        "Certificate upon completion",
+        "Access to digital services"
+      ],
+      "process": [
+        "Visit Common Service Center (CSC)",
+        "Fill application form with Aadhaar",
+        "Complete biometric verification",
+        "Attend training sessions"
+      ],
+      "documents": [
+        "Aadhaar Card",
+        "Bank Account Details",
+        "Mobile Number"
+      ]
+    },
+    {
+      "name": "PM-KUSUM (PRADHAN MANTRI KISAN URJA SURAKSHA EVAM UTTHAN MAHABHIYAN)",
+      "ministry": "Ministry of New and Renewable Energy",
+      "status": "Active",
+      "deadline": "2026",
+      "description": "Solar power scheme for farmers and rural areas",
+      "category": "solar-panel-installation",
+      "eligibility": [
+        "Farmers and farmer groups",
+        "Rural areas with grid connectivity",
+        "Land ownership documents",
+        "Water source availability"
+      ],
+      "benefits": [
+        "90% subsidy on solar pumps",
+        "Solar panel installation",
+        "Income from excess power",
+        "Reduced electricity bills"
+      ],
+      "process": [
+        "Apply through state nodal agency",
+        "Site verification",
+        "Technical feasibility study",
+        "Installation after approval"
+      ],
+      "documents": [
+        "Land Records",
+        "Electricity Connection",
+        "Bank Details",
+        "Aadhaar Card"
+      ]
+    },
+    {
+      "name": "SUB-MISSION ON AGRICULTURAL MECHANIZATION",
+      "ministry": "Ministry of Agriculture & Farmers Welfare",
+      "status": "Active",
+      "deadline": "Ongoing",
+      "description": "Financial assistance for purchase of agricultural machinery and equipment",
+      "category": "smart-agricultural-tools",
+      "eligibility": [
+        "Individual farmers",
+        "Farmer Producer Organizations",
+        "Self Help Groups",
+        "Custom Hiring Centers"
+      ],
+      "benefits": [
+        "40-50% subsidy on machinery",
+        "Technical training",
+        "Maintenance support",
+        "Custom hiring services"
+      ],
+      "process": [
+        "Register on DBT Agriculture portal",
+        "Submit online application",
+        "Document verification",
+        "Subsidy disbursement"
+      ],
+      "documents": [
+        "Farmer ID",
+        "Bank Account",
+        "Land Records",
+        "Aadhaar Card"
+      ]
+    },
+    {
+      "name": "AYUSHMAN BHARAT DIGITAL MISSION",
+      "ministry": "Ministry of Health and Family Welfare",
+      "status": "Active",
+      "deadline": "Ongoing",
+      "description": "Digital health ecosystem including health IDs and digital health records",
+      "category": "healthcare-technology",
+      "eligibility": [
+        "All Indian citizens",
+        "Healthcare providers",
+        "Health facilities",
+        "Technology partners"
+      ],
+      "benefits": [
+        "Free Health ID creation",
+        "Digital health records",
+        "Telemedicine access",
+        "Health facility registry"
+      ],
+      "process": [
+        "Create Health ID online",
+        "Link with healthcare providers",
+        "Access digital services",
+        "Maintain health records"
+      ],
+      "documents": [
+        "Aadhaar Card",
+        "Mobile Number",
+        "Address Proof"
+      ]
+    }
+  ],
+  "sponsorship_options_stats": [
+    {
+    "icon": "fas fa-map-marker-alt",
+      "value": "5+",
+      "label": "Villages Transformed"
+    },
+    {
+      "icon": "fas fa-users",
+      "value": "1,000+",
+      "label": "Lives Impacted"
+    },
+    {
+    "icon": "fas fa-user-friends",
+      "value": "85%",
+      "label": "Success Rate"
+    },
+    {
+    "icon": "fas fa-chart-bar",
+      "value": "30%",
+      "label": "Monthly Growth"
+    }
+  ],
+  "contact_information": {
+    "email": {
+      "address": "adopt@digitalbharat.in",
+      "inquiry_type": "General inquiries and support"
+    },
+    "phone": {
+      "number": "+919876543210",
+      "inquiry_type": "Emergency support and quick queries"
+    },
+    "address": {
+      "organization": "Digital Bharat Foundation",
+      "location": "New Delhi, India 110001"
+    },
+    "support_hours": {
+      "time": "9 AM - 6 PM IST",
+      "days": "Monday to Saturday"
+    },
+    "connect_with_us": [
+      {
+        "platform": "WhatsApp Group",
+        "description": "Join our community for updates and support",
+        "link": "#"
+      },
+      {
+        "platform": "Instagram",
+        "description": "Follow our journey and village stories",
+        "link": "#"
+      },
+      {
+        "platform": "YouTube",
+        "description": "Watch impact videos and tutorials",
+        "link": "#"
+      }
+    ]
+  },
+  "contact_form_categories": [
+    {
+      "value": "general",
+      "label": "General Inquiry"
+    },
+    {
+      "value": "support",
+      "label": "Support"
+    },
+    {
+      "value": "partnership",
+      "label": "Partnership"
+    },
+    {
+      "value": "volunteer",
+      "label": "Volunteer"
+    },
+    {
+      "value": "other",
+      "label": "Other"
+    }
+  ],
+  "contact_section_stats": [
+    {
+      "value": "500+",
+      "label": "Active Volunteers",
+      "icon": "groups"
+    },
+    {
+      "value": "50+",
+      "label": "Partner Organizations",
+      "icon": "apartment"
+    },
+    {
+      "value": "12",
+      "label": "States Covered",
+      "icon": "public"
+    },
+    {
+      "value": "24h",
+      "label": "Response Time",
+      "icon": "access_time"
+    }
+  ],
+  "footer_links": {
+    "quick_links": [
+      {
+        "label": "Home",
+        "href": "#"
+      },
+      {
+        "label": "About Mission",
+        "href": "#"
+      },
+      {
+        "label": "Impact Dashboard",
+        "href": "#"
+      },
+      {
+        "label": "Volunteer",
+        "href": "#"
+      },
+      {
+        "label": "Contact",
+        "href": "#"
+      }
+    ],
+    "focus_areas": [
+      {
+        "label": "Education",
+        "icon": "school"
+      },
+      {
+        "label": "Healthcare",
+        "icon": "local_hospital"
+      },
+      {
+        "label": "Solar Energy",
+        "icon": "solar_power"
+      },
+      {
+        "label": "Agriculture",
+        "icon": "agriculture"
+      }
+    ]
+  },
+  "copyright": "© 2024 Digital Bharat Foundation. All rights reserved.",
+  "policy_links": [
+    {
+      "label": "Privacy Policy",
+      "href": "#"
+    },
+    {
+      "label": "Terms of Service",
+      "href": "#"
+    },
+    {
+      "label": "Disclaimer",
+      "href": "#"
+    }
+  ],
+  "focus_areas_content": [
+    {
+      "id": "digital-education",
+      "tab_label": "Digital Education",
+      "icon": "school",
+      "title": "Empowering Minds Through Digital Education",
+      "description": "Bringing quality learning resources and digital literacy to every village child and adult.",
+      "initiatives": [
+        "Smart Classrooms with Interactive Boards",
+        "E-learning Platforms in Vernacular Languages",
+        "Digital Literacy Workshops for All Ages",
+        "Tablet Distribution with Preloaded Educational Content",
+        "Virtual Mentorship Programs"
+      ],
+      "image_url": "static/images/eduction.png"
+    },
+    {
+      "id": "healthcare-ai",
+      "tab_label": "Healthcare AI",
+      "icon": "local_hospital",
+      "title": "Revolutionizing Rural Healthcare with AI",
+      "description": "Leveraging AI for early disease detection, remote consultations, and health awareness.",
+      "initiatives": [
+        "AI-Powered Diagnostic Tools for Common Ailments",
+        "Telemedicine Kiosks for Remote Doctor Consultations",
+        "Health Chatbots for Instant Medical Information",
+        "Preventive Healthcare Campaigns with Digital Tools",
+        "Data-driven Disease Surveillance Systems"
+      ],
+      "image_url": "static/images/chatbot.png"
+    },
+    {
+      "id": "solar-energy",
+      "tab_label": "Solar Energy",
+      "icon": "solar_power",
+      "title": "Sustainable Power for a Brighter Future",
+      "description": "Providing reliable and clean solar energy solutions for homes, schools, and community centers.",
+      "initiatives": [
+        "Solar Micro-grids for Uninterrupted Power Supply",
+        "Solar-Powered Charging Stations for Devices",
+        "Installation of Solar Street Lights",
+        "Training Local Communities in Solar Panel Maintenance",
+        "Promoting Energy-Efficient Appliances"
+      ],
+      "image_url": "static/images/solar.png"
+    },
+    {
+      "id": "smart-agriculture",
+      "tab_label": "Smart Agriculture",
+      "icon": "agriculture",
+      "title": "Boosting Farm Productivity with Smart Tech",
+      "description": "Empowering farmers with digital tools for better crop management, weather insights, and market access.",
+      "initiatives": [
+        "IoT Sensors for Soil Health Monitoring",
+        "AI-based Crop Disease Detection Apps",
+        "Real-time Weather Forecasts and Advisory",
+        "Digital Market Linkages for Fair Pricing",
+        "Training on Modern Farming Techniques"
+      ],
+      "image_url": "static/images/agriculture.png"
+    }
+    
+  ],
+  
+    "api_key": "AIzaSyC0br2ojApvYftpmJ6vwtdjzlwPHzmIf40"
+}
+
