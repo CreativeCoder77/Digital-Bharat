@@ -1,7 +1,7 @@
 
 # Digital Bharat
 
-Welcome to **Digital Bharat**, a playful and imaginative web project designed purely for fun and exploration! This isn't a real government initiative or official platform, but rather a creative exercise to visualize a "digital" India with a lighthearted approach.
+Welcome to **Digital Bharat**, a playful and imaginative web project designed purely for fun and exploration! This isn't a real government initiative or official platform, but rather a creative exercise to visualize a "digital" Village with a lighthearted approach.
 
 🚀 **Demo**  
 Experience Digital Bharat live: [https://digital-bharat.onrender.com/](https://digital-bharat.onrender.com/)
@@ -10,7 +10,7 @@ Experience Digital Bharat live: [https://digital-bharat.onrender.com/](https://d
 
 ## ✨ About Digital Bharat
 
-Digital Bharat is a simple, static website that aims to showcase a whimsical interpretation of a digitally empowered India. It's built with a focus on basic web development concepts and provides a glimpse into how a "fun" digital future might look, without any complex functionalities or backend integrations. Think of it as a digital sketchpad for ideas!
+Digital Bharat is a simple, static website that aims to showcase a how a village can be digitally enhanced. It's built with a focus on basic web development concepts and provides a glimpse into how a "fun" digital future might look, . Think of it as a digital sketchpad for ideas!
 
 ---
 
@@ -47,10 +47,10 @@ git clone https://github.com/CreativeCoder77/Digital-Bharat.git
 cd Digital-Bharat
 ```
 
-### Open index.html:
-
-Simply open the `index.html` file in your preferred web browser.
-
+### run app.py:              
+```bash
+python app.py
+```
 ---
 
 ## 🤝 Contributing
