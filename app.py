@@ -26,16 +26,19 @@ _map_cache = {}
 _cache_lock = threading.Lock()
 CACHE_TTL = 3600
 
-PROBLEM_REPORT_FILE = "/etc/secrets/problem_reports.json"
-DONATION_FILE = "/etc/secrets/donations.json"
-APPLICATION_FILE = "/etc/secrets/applications.json"
-CONTACT_FILE = "/etc/secrets/contact.json"
-DOCTOR_APPOINTMENT_FILE = "/etc/secrets/doctor_appointment.json"
-MEDICINES_FILE = "/etc/secrets/medicines.json"
-ACTIVITY_FILE = '/etc/secrets/user_activity.json'
-AI_USAGE_FILE = "/etc/secrets/ai_usage_stats.json"
-CLICK_FILE = "/etc/secrets/click_data.json"
-USER_FILE = "/etc/secrets/user_activity.json"
+
+# tmp so that on render we can edit the json files. 
+# This is only viable for local machines only thats why using json format database with no security.
+PROBLEM_REPORT_FILE = "/tmp/problem_reports.json"
+DONATION_FILE = "/tmp/donations.json"
+APPLICATION_FILE = "/tmp/applications.json"
+CONTACT_FILE = "/tmp/contact.json"
+DOCTOR_APPOINTMENT_FILE = "/tmp/doctor_appointment.json"
+MEDICINES_FILE = "/tmp/medicines.json"
+ACTIVITY_FILE = "/tmp/user_activity.json"
+AI_USAGE_FILE = "/tmp/ai_usage_stats.json"
+CLICK_FILE = "/tmp/click_data.json"
+USER_FILE = "/tmp/user_activity.json"
 
 
 
@@ -460,3 +463,4 @@ def get_ai_usage_stats():
 if __name__ == '__main__':
     executor.submit(_fetch_geodata_background)
     app.run(debug=True, threaded=True, host='0.0.0.0', port=5000)
+
